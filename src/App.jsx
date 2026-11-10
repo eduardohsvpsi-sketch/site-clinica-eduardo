@@ -116,6 +116,7 @@ const CONTENT = {
     emailBody:
       'Olá, Eduardo!\n\nVi a sua página e gostaria de saber mais informações sobre o agendamento de uma sessão de psicoterapia online.\n\nAtenciosamente,',
     headerRole: 'Psicólogo Clínico • 100% Online',
+    headerRoleMobile: 'Psicólogo • 100% Online',
     nav: [
       { label: 'Início', href: '#inicio' },
       { label: 'Como Funciona a Terapia', href: '#como-funciona-terapia' },
@@ -196,11 +197,20 @@ const CONTENT = {
       '. Minha atuação é 100% dedicada ao atendimento online (em português e inglês) de adultos, idosos e pessoas LGBTQIAPN+, conectando rigor técnico, sensibilidade histórico-cultural e praticidade para acolher você onde quer que esteja.',
     aboutP2:
       'Acredito em uma psicologia ativa, dinâmica e sem posturas engessadas: um trabalho construído lado a lado com você, que valida a sua história com profundidade enquanto oferece ferramentas claras para lidar com os desafios reais do presente.',
-    /* Segunda foto (formatura) como a primeira no carrossel */
+    /* Primeiro Carrossel: Fotos 2 e 1 (Foto 3 movida para o segundo carrossel) */
     carouselPhotos: [
       { src: PHOTO_2_URL, alt: 'Eduardo Vieira - Formatura em Psicologia' },
       { src: PHOTO_URL, alt: 'Eduardo Vieira - Psicólogo Clínico' },
-      { src: PHOTO_3_URL, alt: 'Eduardo Vieira - Momento pessoal' },
+    ],
+    /* Segundo Carrossel em Sobre Mim: Clínica & Arte com Foto 3 */
+    artBadge: 'Clínica, Arte & Histórias',
+    artTitle: 'Onde a psicologia encontra o cinema, a literatura e os quadrinhos',
+    artP1:
+      'Para mim, a clínica e a arte sempre caminham juntas. Fora dos atendimentos, sou um grande apaixonado por cinema, livros e quadrinhos, e essa paixão é muito mais do que um passatempo: é uma extensão da forma como compreendo a complexidade do ser humano. Entendo que a arte tem o poder de reunir e conectar elementos que muitas vezes parecem distantes ou fragmentados na nossa vida cotidiana. Vejo na prática como se tornam instrumentos valiosos para a criação de novos sentidos.',
+    artP2:
+      'Acredito profundamente que as boas histórias nos humanizam e nos conectam. As aflições, os medos e as alegrias vividas por personagens e os sentimentos que experimentamos através deles são inteiramente reais. Gosto de pensar que a psicoterapia, assim como uma grande obra cinematográfica ou uma saga em quadrinhos, é um espaço seguro para vivenciar emoções, compreender o roteiro da sua própria vida e, principalmente, assumir a autoria da sua história.',
+    artCarouselPhotos: [
+      { src: PHOTO_3_URL, alt: 'Eduardo Vieira - Cinema, livros e quadrinhos' },
     ],
     prevPhotoLabel: 'Foto anterior',
     nextPhotoLabel: 'Próxima foto',
@@ -219,6 +229,7 @@ const CONTENT = {
     emailBody:
       'Hello, Eduardo!\n\nI visited your website and would like more information about scheduling an online psychotherapy session.\n\nBest regards,',
     headerRole: 'Clinical Psychologist • 100% Online',
+    headerRoleMobile: 'Psychologist • 100% Online',
     nav: [
       { label: 'Home', href: '#inicio' },
       { label: 'How Therapy Works', href: '#como-funciona-terapia' },
@@ -299,11 +310,20 @@ const CONTENT = {
       '. My practice is 100% dedicated to online psychotherapy (in Portuguese and English) for adults, older adults, and LGBTQIAPN+ individuals—combining technical rigor, historical-cultural sensitivity, and practicality to welcome you wherever you are.',
     aboutP2:
       'I believe in an active, dynamic psychology free of rigid postures: a collaborative process built side by side with you, validating your story with depth while offering clear tools to deal with real-life challenges in the present.',
-    /* Second photo (graduation) as the first slide in the carousel */
+    /* First Carousel: Photos 2 and 1 */
     carouselPhotos: [
       { src: PHOTO_2_URL, alt: 'Eduardo Vieira - Psychology Graduation' },
       { src: PHOTO_URL, alt: 'Eduardo Vieira - Clinical Psychologist' },
-      { src: PHOTO_3_URL, alt: 'Eduardo Vieira - Personal moment' },
+    ],
+    /* Second Carousel in About Me: Clinic & Art with Photo 3 */
+    artBadge: 'Clinic, Art & Stories',
+    artTitle: 'Where psychology meets cinema, literature, and comic books',
+    artP1:
+      'For me, clinical practice and art always walk hand in hand. Outside of sessions, I am deeply passionate about cinema, books, and comic books—and this passion is much more than a hobby: it is an extension of how I understand human complexity. I see that art has the power to bring together and connect elements that often seem distant or fragmented in our everyday lives. In practice, I witness how they become valuable instruments for creating new meanings.',
+    artP2:
+      'I deeply believe that great stories humanize and connect us. The struggles, fears, and joys experienced by characters—and the emotions we feel through them—are entirely real. I like to think that psychotherapy, much like a great film or a comic book saga, is a safe space to experience emotions, understand the script of your own life, and above all, claim authorship of your own story.',
+    artCarouselPhotos: [
+      { src: PHOTO_3_URL, alt: 'Eduardo Vieira - Cinema, books, and comic books' },
     ],
     prevPhotoLabel: 'Previous photo',
     nextPhotoLabel: 'Next photo',
@@ -321,6 +341,7 @@ export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [lang, setLang] = useState('pt');
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentArtSlide, setCurrentArtSlide] = useState(0);
 
   const t = CONTENT[lang];
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
@@ -342,41 +363,56 @@ export default function App() {
   }, [lang, t.pageTitle]);
 
   const totalSlides = t.carouselPhotos.length;
+  const safeSlide = currentSlide % totalSlides;
   const prevSlide = () =>
     setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
   const nextSlide = () =>
     setCurrentSlide((prev) => (prev + 1) % totalSlides);
 
+  const totalArtSlides = t.artCarouselPhotos.length;
+  const safeArtSlide = currentArtSlide % totalArtSlides;
+  const prevArtSlide = () =>
+    setCurrentArtSlide((prev) => (prev - 1 + totalArtSlides) % totalArtSlides);
+  const nextArtSlide = () =>
+    setCurrentArtSlide((prev) => (prev + 1) % totalArtSlides);
+
   return (
     <div className="min-h-screen flex flex-col bg-[#F4F5F6] text-[#353839] font-sans antialiased selection:bg-[#B08D57]/20 selection:text-[#353839]">
-      {/* Header / Navbar Clean com Switch de Idioma PT/EN e Bandeiras Divididas */}
+      {/* Header / Navbar Responsivo para Mobile e Desktop */}
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           scrolled
-            ? 'bg-[#353839]/95 backdrop-blur-md shadow-md py-3'
-            : 'bg-[#353839] py-4'
+            ? 'bg-[#353839]/95 backdrop-blur-md shadow-md py-2.5 sm:py-3'
+            : 'bg-[#353839] py-3 sm:py-4'
         } border-b border-white/10`}
       >
-        <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <div className="flex items-center justify-between gap-4">
-            <a href="#inicio" className="flex items-center gap-3.5 group shrink-0">
+        <div className="max-w-6xl mx-auto px-3.5 sm:px-8">
+          <div className="flex items-center justify-between gap-2 sm:gap-4">
+            {/* Identidade no Topo (Compacta e proporcional no Mobile) */}
+            <a
+              href="#inicio"
+              className="flex items-center gap-2.5 sm:gap-3.5 group min-w-0 shrink"
+            >
               <img
                 src={PHOTO_URL}
                 alt="Eduardo Vieira"
-                className="w-10 h-10 rounded-full object-cover object-top border border-[#B08D57] group-hover:opacity-90 transition-opacity duration-300"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full object-cover object-top border border-[#B08D57] shrink-0 group-hover:opacity-90 transition-opacity duration-300"
               />
-              <div>
-                <span className="block text-white font-serif text-lg sm:text-xl font-medium tracking-wide leading-tight">
+              <div className="min-w-0">
+                <span className="block text-white font-serif text-base sm:text-xl font-medium tracking-wide leading-tight truncate">
                   Eduardo Vieira
                 </span>
-                <span className="block text-[#D1D5DB] text-[11px] uppercase tracking-[0.18em]">
+                <span className="hidden sm:block text-[#D1D5DB] text-[11px] uppercase tracking-[0.18em]">
                   {t.headerRole}
+                </span>
+                <span className="block sm:hidden text-[#D1D5DB] text-[9.5px] uppercase tracking-[0.1em] truncate">
+                  {t.headerRoleMobile}
                 </span>
               </div>
             </a>
 
             {/* Botões de navegação no topo sem contorno + Switch PT/EN com Bandeiras Divididas (Desktop) */}
-            <nav className="hidden md:flex items-center gap-5 lg:gap-7">
+            <nav className="hidden md:flex items-center gap-5 lg:gap-7 shrink-0">
               {t.nav.map((item) => (
                 <a
                   key={item.href}
@@ -403,7 +439,7 @@ export default function App() {
                       : 'text-[#D1D5DB] hover:text-white'
                   }`}
                 >
-                  <FlagBrPt />
+                  <FlagBrPt uid="desk" />
                   <span>PT</span>
                 </button>
                 <button
@@ -416,7 +452,7 @@ export default function App() {
                       : 'text-[#D1D5DB] hover:text-white'
                   }`}
                 >
-                  <FlagUsUk />
+                  <FlagUsUk uid="desk" />
                   <span>EN</span>
                 </button>
               </div>
@@ -431,10 +467,10 @@ export default function App() {
               </a>
             </nav>
 
-            {/* Controles Mobile Clean + Switch PT/EN com Bandeiras Divididas */}
-            <div className="flex md:hidden items-center gap-2">
+            {/* Controles Mobile Otimizados (Sem aperto na tela) */}
+            <div className="flex md:hidden items-center gap-1.5 shrink-0">
               <div
-                className="inline-flex items-center rounded-lg bg-[#27292A] p-0.5 text-[11px] font-medium text-[#D1D5DB]"
+                className="inline-flex items-center rounded-lg bg-[#27292A] p-0.5 text-[10px] font-medium text-[#D1D5DB]"
                 role="group"
                 aria-label="Selecionar idioma / Select language"
               >
@@ -442,65 +478,66 @@ export default function App() {
                   type="button"
                   onClick={() => setLang('pt')}
                   title="Português (Brasil / Portugal)"
-                  className={`inline-flex items-center gap-1 px-2 py-1 rounded-md transition-all ${
+                  className={`inline-flex items-center gap-1 px-1.5 py-1 rounded-md transition-all ${
                     lang === 'pt'
                       ? 'bg-[#B08D57] text-white font-semibold'
                       : 'text-[#D1D5DB] hover:text-white'
                   }`}
                 >
-                  <FlagBrPt className="w-4 h-3" uid="mob" />
+                  <FlagBrPt className="w-3.5 h-2.5" uid="mob" />
                   <span>PT</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setLang('en')}
                   title="English (USA / UK)"
-                  className={`inline-flex items-center gap-1 px-2 py-1 rounded-md transition-all ${
+                  className={`inline-flex items-center gap-1 px-1.5 py-1 rounded-md transition-all ${
                     lang === 'en'
                       ? 'bg-[#B08D57] text-white font-semibold'
                       : 'text-[#D1D5DB] hover:text-white'
                   }`}
                 >
-                  <FlagUsUk className="w-4 h-3" uid="mob" />
+                  <FlagUsUk className="w-3.5 h-2.5" uid="mob" />
                   <span>EN</span>
                 </button>
               </div>
+
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-2.5 py-1.5 rounded-lg bg-[#B08D57] hover:bg-[#C5A572] text-white font-semibold text-[11px] tracking-wide transition-all"
+              >
+                {t.ctaScheduleShort}
+              </a>
 
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-expanded={mobileMenuOpen}
                 aria-label="Menu"
-                className="inline-flex items-center gap-1 px-2 py-1.5 text-[#E5E7EB] hover:text-[#C5A572] text-xs font-medium transition-colors"
+                className="inline-flex items-center justify-center p-1.5 rounded-lg text-[#E5E7EB] hover:text-[#C5A572] transition-colors"
               >
-                <span>{t.menuLabel}</span>
                 <svg
-                  className={`w-4 h-4 text-[#C5A572] transition-transform duration-200 ${
-                    mobileMenuOpen ? 'rotate-180' : ''
-                  }`}
+                  className="w-5 h-5 text-[#C5A572]"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
                   viewBox="0 0 24 24"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  {mobileMenuOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                  )}
                 </svg>
               </button>
-
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3 py-2 rounded-lg bg-[#B08D57] hover:bg-[#C5A572] text-white font-medium text-xs tracking-wide transition-all"
-              >
-                {t.ctaScheduleShort}
-              </a>
             </div>
           </div>
 
           {/* Menu Dropdown em Listagem Limpa (Mobile) */}
           {mobileMenuOpen && (
-            <div className="md:hidden mt-3 pt-2 border-t border-white/10">
+            <div className="md:hidden mt-2.5 pt-2 border-t border-white/10">
               <ul className="flex flex-col py-1">
                 {t.nav.map((item) => (
                   <li key={item.href}>
@@ -521,18 +558,18 @@ export default function App() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-grow pt-16 sm:pt-20">
+      <main className="flex-grow pt-14 sm:pt-20">
         {/* 1. HERO SECTION (Primeira Dobra) */}
         <section
           id="inicio"
-          className="relative bg-[#353839] text-white overflow-hidden py-16 sm:py-24 border-b border-[#B08D57]/40"
+          className="relative bg-[#353839] text-white overflow-hidden py-12 sm:py-24 border-b border-[#B08D57]/40"
         >
           <div className="max-w-6xl mx-auto px-5 sm:px-8 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
               {/* Coluna de Texto da Hero */}
-              <div className="lg:col-span-7 space-y-6">
-                <div className="inline-flex items-center gap-2 text-[#C5A572] text-xs sm:text-sm uppercase tracking-[0.2em] font-medium">
-                  <span className="w-2 h-2 rounded-full bg-[#B08D57]" />
+              <div className="lg:col-span-7 space-y-5 sm:space-y-6">
+                <div className="inline-flex items-center gap-2 text-[#C5A572] text-[11px] sm:text-sm uppercase tracking-[0.16em] sm:tracking-[0.2em] font-medium">
+                  <span className="w-2 h-2 rounded-full bg-[#B08D57] shrink-0" />
                   <span>{t.heroBadge}</span>
                 </div>
 
@@ -547,12 +584,12 @@ export default function App() {
                   {t.heroDescription}
                 </p>
 
-                <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4">
                   <a
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C5A572] active:bg-[#8C6D3F] text-white font-semibold text-base sm:text-lg shadow-lg shadow-black/20 transition-all duration-300 transform hover:-translate-y-0.5 text-center"
+                    className="inline-flex items-center justify-center gap-3 px-7 py-3.5 sm:px-8 sm:py-4 rounded-xl bg-[#B08D57] hover:bg-[#C5A572] active:bg-[#8C6D3F] text-white font-semibold text-base sm:text-lg shadow-lg shadow-black/20 transition-all duration-300 transform hover:-translate-y-0.5 text-center"
                   >
                     <span>{t.ctaSchedule}</span>
                     <svg
@@ -572,13 +609,13 @@ export default function App() {
 
                   <a
                     href="#como-funciona-terapia"
-                    className="inline-flex items-center justify-center px-6 py-4 text-[#E5E7EB] hover:text-[#C5A572] text-sm sm:text-base font-medium transition-colors duration-200 text-center"
+                    className="inline-flex items-center justify-center px-6 py-3 sm:py-4 text-[#E5E7EB] hover:text-[#C5A572] text-sm sm:text-base font-medium transition-colors duration-200 text-center"
                   >
                     {t.heroHowItWorksBtn}
                   </a>
                 </div>
 
-                <div className="pt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-white/10 text-xs sm:text-sm text-[#D1D5DB]">
+                <div className="pt-5 sm:pt-6 grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-4 border-t border-white/10 text-xs sm:text-sm text-[#D1D5DB]">
                   <div>
                     <span className="block text-[#C5A572] font-medium">
                       {t.metaModalityTitle}
@@ -602,7 +639,7 @@ export default function App() {
 
               {/* Coluna da Foto Clean */}
               <div className="lg:col-span-5">
-                <div className="mx-auto max-w-sm lg:max-w-md">
+                <div className="mx-auto max-w-xs sm:max-w-sm lg:max-w-md">
                   <div className="rounded-2xl bg-[#27292A] border border-white/10 overflow-hidden shadow-xl">
                     <div className="relative aspect-[4/4.3] w-full overflow-hidden bg-[#353839]">
                       <img
@@ -621,7 +658,7 @@ export default function App() {
                       </div>
                     </div>
 
-                    <div className="p-5 bg-[#27292A] flex items-center justify-between text-xs text-[#D1D5DB]">
+                    <div className="p-4 sm:p-5 bg-[#27292A] flex items-center justify-between text-xs text-[#D1D5DB]">
                       <span>{t.heroCardFooter}</span>
                       <a
                         href={whatsappUrl}
@@ -642,10 +679,10 @@ export default function App() {
         {/* 2. COMO FUNCIONA A TERAPIA (Base Histórico-Cultural com Ilustração) */}
         <section
           id="como-funciona-terapia"
-          className="scroll-mt-20 py-16 sm:py-24 bg-[#F4F5F6] text-[#353839] border-b border-[#E5E7EB]"
+          className="scroll-mt-20 py-14 sm:py-24 bg-[#F4F5F6] text-[#353839] border-b border-[#E5E7EB]"
         >
           <div id="abordagem" className="max-w-5xl mx-auto px-5 sm:px-8">
-            <div className="text-center max-w-2xl mx-auto mb-12">
+            <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
               <span className="inline-block text-xs uppercase tracking-[0.22em] text-[#8C6D3F] font-semibold mb-2">
                 {t.therapyBadge}
               </span>
@@ -655,11 +692,11 @@ export default function App() {
               <div className="w-12 h-0.5 bg-[#B08D57] mx-auto mt-4" />
             </div>
 
-            <div className="rounded-2xl bg-white border border-[#E5E7EB] border-l-4 border-l-[#B08D57] shadow-sm p-7 sm:p-11 lg:p-12">
+            <div className="rounded-2xl bg-white border border-[#E5E7EB] border-l-4 border-l-[#B08D57] shadow-sm p-6 sm:p-11 lg:p-12">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                 {/* Coluna da Imagem (Ilustração na Base Histórico-Cultural) */}
                 <div className="lg:col-span-4 flex flex-col items-center justify-center">
-                  <div className="w-52 sm:w-60 lg:w-full max-w-[260px] aspect-square rounded-2xl bg-[#F4F5F6] border border-[#E5E7EB] p-6 flex items-center justify-center">
+                  <div className="w-48 sm:w-60 lg:w-full max-w-[260px] aspect-square rounded-2xl bg-[#F4F5F6] border border-[#E5E7EB] p-5 sm:p-6 flex items-center justify-center">
                     <img
                       src={PHC_IMAGE_URL}
                       alt={t.therapyImageAlt}
@@ -692,10 +729,10 @@ export default function App() {
         {/* 3. PARA QUEM É (01, 02 e 03) */}
         <section
           id="para-quem"
-          className="scroll-mt-20 py-16 sm:py-24 bg-[#353839] text-white"
+          className="scroll-mt-20 py-14 sm:py-24 bg-[#353839] text-white"
         >
           <div className="max-w-5xl mx-auto px-5 sm:px-8">
-            <div className="text-center max-w-2xl mx-auto mb-12">
+            <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
               <span className="inline-block text-xs uppercase tracking-[0.22em] text-[#C5A572] font-semibold mb-2">
                 {t.audienceBadge}
               </span>
@@ -709,7 +746,7 @@ export default function App() {
               {t.audiences.map((aud) => (
                 <div
                   key={aud.num}
-                  className="rounded-2xl bg-[#27292A] border border-white/10 p-7 flex flex-col justify-between"
+                  className="rounded-2xl bg-[#27292A] border border-white/10 p-6 sm:p-7 flex flex-col justify-between"
                 >
                   <div>
                     <span className="text-xs font-semibold uppercase tracking-widest text-[#C5A572]">
@@ -736,20 +773,21 @@ export default function App() {
           </div>
         </section>
 
-        {/* 4. SOBRE MIM (Mini-biografia com Carrossel de 3 Fotos e Contatos) */}
+        {/* 4. SOBRE MIM (Dois blocos idênticos com Carrossel: 1. Formação & Prática | 2. Clínica & Arte) */}
         <section
           id="sobre"
-          className="scroll-mt-20 py-16 sm:py-24 bg-[#F4F5F6] text-[#353839]"
+          className="scroll-mt-20 py-14 sm:py-24 bg-[#F4F5F6] text-[#353839]"
         >
-          <div className="max-w-5xl mx-auto px-5 sm:px-8">
-            <div className="rounded-2xl bg-[#353839] text-white p-7 sm:p-12 shadow-xl">
+          <div className="max-w-5xl mx-auto px-5 sm:px-8 space-y-8 sm:space-y-10">
+            {/* BLOCO 1: Apresentação Profissional (Fotos 2 e 1) */}
+            <div className="rounded-2xl bg-[#353839] text-white p-6 sm:p-12 shadow-xl">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                {/* Coluna do Carrossel de Fotos */}
+                {/* Coluna do Carrossel 1 (Fotos 2 e 1) */}
                 <div className="lg:col-span-5 flex flex-col items-center text-center">
-                  <div className="relative w-64 sm:w-72 aspect-[4/4.5] rounded-2xl overflow-hidden border border-[#B08D57] shadow-lg bg-[#27292A] mb-4 group">
+                  <div className="relative w-full max-w-[260px] sm:w-72 aspect-[4/4.5] rounded-2xl overflow-hidden border border-[#B08D57] shadow-lg bg-[#27292A] mb-4 group">
                     <img
-                      src={t.carouselPhotos[currentSlide].src}
-                      alt={t.carouselPhotos[currentSlide].alt}
+                      src={t.carouselPhotos[safeSlide].src}
+                      alt={t.carouselPhotos[safeSlide].alt}
                       className="w-full h-full object-cover object-center transition-all duration-500"
                     />
 
@@ -782,7 +820,7 @@ export default function App() {
                           onClick={() => setCurrentSlide(idx)}
                           aria-label={`Slide ${idx + 1}`}
                           className={`h-2 rounded-full transition-all ${
-                            currentSlide === idx
+                            safeSlide === idx
                               ? 'w-6 bg-[#B08D57]'
                               : 'w-2 bg-white/60 hover:bg-white'
                           }`}
@@ -799,7 +837,7 @@ export default function App() {
                   </h2>
                 </div>
 
-                {/* Coluna da Mini-Biografia + Contatos */}
+                {/* Coluna da Mini-Biografia */}
                 <div className="lg:col-span-7 space-y-4">
                   <span className="inline-block text-xs uppercase tracking-[0.2em] text-[#C5A572] font-semibold">
                     {t.aboutBadge}
@@ -817,6 +855,82 @@ export default function App() {
                   <p className="text-[#E5E7EB] text-base sm:text-lg leading-relaxed font-light">
                     {t.aboutP2}
                   </p>
+                </div>
+              </div>
+            </div>
+
+            {/* BLOCO 2: Carrossel Idêntico — Clínica, Arte, Cinema, Livros e Quadrinhos (Foto 3) */}
+            <div className="rounded-2xl bg-[#353839] text-white p-6 sm:p-12 shadow-xl">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                {/* Coluna do Carrossel 2 (Foto 3) */}
+                <div className="lg:col-span-5 flex flex-col items-center text-center">
+                  <div className="relative w-full max-w-[260px] sm:w-72 aspect-[4/4.5] rounded-2xl overflow-hidden border border-[#B08D57] shadow-lg bg-[#27292A] mb-4 group">
+                    <img
+                      src={t.artCarouselPhotos[safeArtSlide].src}
+                      alt={t.artCarouselPhotos[safeArtSlide].alt}
+                      className="w-full h-full object-cover object-center transition-all duration-500"
+                    />
+
+                    {/* Botão Anterior */}
+                    <button
+                      type="button"
+                      onClick={prevArtSlide}
+                      aria-label={t.prevPhotoLabel}
+                      className="absolute left-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#27292A]/80 hover:bg-[#B08D57] text-white flex items-center justify-center transition-colors shadow-md"
+                    >
+                      ‹
+                    </button>
+
+                    {/* Botão Próximo */}
+                    <button
+                      type="button"
+                      onClick={nextArtSlide}
+                      aria-label={t.nextPhotoLabel}
+                      className="absolute right-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#27292A]/80 hover:bg-[#B08D57] text-white flex items-center justify-center transition-colors shadow-md"
+                    >
+                      ›
+                    </button>
+
+                    {/* Indicadores (Dots) */}
+                    <div className="absolute bottom-3 left-0 right-0 flex items-center justify-center gap-2">
+                      {t.artCarouselPhotos.map((_, idx) => (
+                        <button
+                          key={idx}
+                          type="button"
+                          onClick={() => setCurrentArtSlide(idx)}
+                          aria-label={`Slide ${idx + 1}`}
+                          className={`h-2 rounded-full transition-all ${
+                            safeArtSlide === idx
+                              ? 'w-6 bg-[#B08D57]'
+                              : 'w-2 bg-white/60 hover:bg-white'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  <span className="text-xs uppercase tracking-[0.2em] text-[#C5A572] font-medium">
+                    {t.roleTitle}
+                  </span>
+                  <h2 className="font-serif text-2xl sm:text-3xl font-medium text-white mt-1">
+                    Eduardo Vieira
+                  </h2>
+                </div>
+
+                {/* Coluna do Texto sobre Clínica, Arte, Cinema, Livros e Quadrinhos + Contatos */}
+                <div className="lg:col-span-7 space-y-4">
+                  <span className="inline-block text-xs uppercase tracking-[0.2em] text-[#C5A572] font-semibold">
+                    {t.artBadge}
+                  </span>
+                  <h3 className="font-serif text-2xl sm:text-3xl font-medium text-white leading-snug">
+                    {t.artTitle}
+                  </h3>
+                  <p className="text-[#E5E7EB] text-base sm:text-lg leading-relaxed font-light">
+                    {t.artP1}
+                  </p>
+                  <p className="text-[#E5E7EB] text-base sm:text-lg leading-relaxed font-light">
+                    {t.artP2}
+                  </p>
 
                   {/* Bloco de Contatos (E-mail direto com mensagem preenchida e Instagram) */}
                   <div className="pt-3 border-t border-white/10">
@@ -826,9 +940,9 @@ export default function App() {
                     <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-6 text-sm text-[#E5E7EB]">
                       <a
                         href={emailUrl}
-                        className="inline-flex items-center gap-2 hover:text-[#C5A572] underline-offset-4 hover:underline transition-colors"
+                        className="inline-flex items-center gap-2 hover:text-[#C5A572] underline-offset-4 hover:underline transition-colors break-all"
                       >
-                        <span className="text-[#C5A572] font-medium">E-mail:</span>
+                        <span className="text-[#C5A572] font-medium shrink-0">E-mail:</span>
                         <span>{EMAIL_ADDRESS}</span>
                       </a>
                       <a
@@ -837,7 +951,7 @@ export default function App() {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 hover:text-[#C5A572] underline-offset-4 hover:underline transition-colors"
                       >
-                        <span className="text-[#C5A572] font-medium">Instagram:</span>
+                        <span className="text-[#C5A572] font-medium shrink-0">Instagram:</span>
                         <span>@{INSTAGRAM_HANDLE}</span>
                       </a>
                     </div>
@@ -848,7 +962,7 @@ export default function App() {
                       href={whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-[#B08D57] hover:bg-[#C5A572] text-white font-semibold text-sm sm:text-base transition-all duration-300"
+                      className="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-7 py-3.5 rounded-xl bg-[#B08D57] hover:bg-[#C5A572] text-white font-semibold text-sm sm:text-base transition-all duration-300"
                     >
                       <span>{t.ctaSchedule}</span>
                       <span>→</span>
@@ -884,7 +998,7 @@ export default function App() {
               </div>
             </div>
 
-            <div className="flex flex-col sm:items-end gap-2">
+            <div className="flex flex-col sm:items-end gap-2 w-full md:w-auto">
               <a
                 href={whatsappUrl}
                 target="_blank"
@@ -893,14 +1007,14 @@ export default function App() {
               >
                 WhatsApp: +55 (13) 98121-6248
               </a>
-              <div className="flex flex-wrap items-center gap-4 text-xs text-[#D1D5DB] pt-1">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-[#D1D5DB] pt-1">
                 <a
                   href={emailUrl}
                   className="hover:text-[#C5A572] underline-offset-4 hover:underline transition-colors"
                 >
                   E-mail: {EMAIL_ADDRESS}
                 </a>
-                <span>•</span>
+                <span className="hidden sm:inline">•</span>
                 <a
                   href={INSTAGRAM_URL}
                   target="_blank"
@@ -914,7 +1028,7 @@ export default function App() {
           </div>
 
           <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#D1D5DB]">
-            <p>
+            <p className="text-center sm:text-left">
               © {new Date().getFullYear()} Eduardo Vieira — {t.roleTitle} (CRP 06/200229). {t.footerRights}
             </p>
             <p className="text-center sm:text-right text-[11px] text-[#D1D5DB]/80">
@@ -930,10 +1044,10 @@ export default function App() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={t.ctaSchedule}
-        className="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 px-4 py-3.5 sm:px-5 sm:py-4 rounded-full bg-[#B08D57] hover:bg-[#C5A572] text-white shadow-xl transition-all duration-300 transform hover:scale-105 focus:outline-none"
+        className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-50 flex items-center gap-2 sm:gap-2.5 px-4 py-3 sm:px-5 sm:py-4 rounded-full bg-[#B08D57] hover:bg-[#C5A572] text-white shadow-xl transition-all duration-300 transform hover:scale-105 focus:outline-none"
       >
         <svg
-          className="w-6 h-6 fill-current shrink-0"
+          className="w-5 h-5 sm:w-6 sm:h-6 fill-current shrink-0"
           viewBox="0 0 24 24"
           aria-hidden="true"
         >

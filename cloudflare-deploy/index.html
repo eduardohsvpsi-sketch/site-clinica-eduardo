@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eduardo Vieira | Psicólogo Clínico Online</title>
+  <meta name="description" content="Um espaço seguro para compreender suas angústias e ressignificar sua história. Psicoterapia 100% online em português e inglês para Adultos, Idosos e Pessoas LGBTQIAPN+ com Eduardo Vieira." />
+  <meta name="theme-color" content="#353839" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            onyx: {
+              DEFAULT: '#353839',
+              dark: '#27292A',
+              light: '#474B4D',
+            },
+            bronze: {
+              DEFAULT: '#B08D57',
+              light: '#C5A572',
+              dark: '#8C6D3F',
+            },
+            silver: {
+              DEFAULT: '#E5E7EB',
+              light: '#F4F5F6',
+              muted: '#D1D5DB',
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+</head>
+<body class="bg-[#F4F5F6] text-[#353839] font-sans antialiased">
+  <div id="root"></div>
+
+  <script>
+    (function () {
+      var useState = React.useState;
+      var useEffect = React.useEffect;
+      var h = React.createElement;
+
+      var WHATSAPP_NUMBER = '5513981216248';
+      var EMAIL_ADDRESS = 'eduardohsv.psi@gmail.com';
+      var INSTAGRAM_HANDLE = 'culturaehistoriapsi';
+      var INSTAGRAM_URL = 'https://instagram.com/' + INSTAGRAM_HANDLE;
+
+      var PHOTO_URL = './eduardo-foto.jpg';
+      var PHOTO_2_URL = './eduardo-foto-2.jpg';
+      var PHOTO_3_URL = './eduardo-foto-3.jpg';
+      var PHC_IMAGE_URL = './phc-ilustracao.png';
+
+      /* Bandeira dividida Brasil / Portugal (SVG nítido em qualquer SO) */
+      function FlagBrPt(props) {
+        var className = (props && props.className) || 'w-5 h-3.5';
+        var uid = (props && props.uid) || 'd';
+        var clipBr = 'clip-br-' + uid;
+        var clipPt = 'clip-pt-' + uid;
+        return h(
+          'svg',
+          {
+            viewBox: '0 0 28 20',
+            className:
+              className +
+              ' rounded-[3px] shadow-sm shrink-0 overflow-hidden border border-white/20',
+            'aria-hidden': 'true',
+          },
+          h(
+            'defs',
+            null,
+            h(
+              'clipPath',
+              { id: clipBr },
+              h('polygon', { points: '0,0 28,0 0,20' })
+            ),
+            h(
+              'clipPath',
+              { id: clipPt },
+              h('polygon', { points: '28,0 28,20 0,20' })
+            )
+          ),
+          /* Metade Superior-Esquerda: Brasil */
+          h(
+            'g',
+            { clipPath: 'url(#' + clipBr + ')' },
+            h('rect', { width: '28', height: '20', fill: '#009B3A' }),
+            h('polygon', { points: '14,2.2 25.5,10 14,17.8 2.5,10', fill: '#FEDF00' }),
+            h('circle', { cx: '14', cy: '10', r: '4.2', fill: '#002776' })
+          ),
+          /* Metade Inferior-Direita: Portugal */
+          h(
+            'g',
+            { clipPath: 'url(#' + clipPt + ')' },
+            h('rect', { x: '0', y: '0', width: '11.2', height: '20', fill: '#006600' }),
+            h('rect', { x: '11.2', y: '0', width: '16.8', height: '20', fill: '#FF0000' }),
+            h('circle', { cx: '11.2', cy: '10', r: '3.4', fill: '#FFE600' }),
+            h('rect', {
+              x: '9.6',
+              y: '8.4',
+              width: '3.2',
+              height: '3.2',
+              rx: '0.8',
+              fill: '#FFFFFF',
+            }),
+            h('rect', {
+              x: '10.1',
+              y: '8.9',
+              width: '2.2',
+              height: '2.2',
+              rx: '0.5',
+              fill: '#FF0000',
+            })
+          ),
+          h('line', {
+            x1: '0',
+            y1: '20',
+            x2: '28',
+            y2: '0',
+            stroke: '#27292A',
+            strokeWidth: '1.1',
+          })
+        );
+      }
+
+      /* Bandeira dividida EUA / Reino Unido (SVG nítido em qualquer SO) */
+      function FlagUsUk(props) {
+        var className = (props && props.className) || 'w-5 h-3.5';
+        var uid = (props && props.uid) || 'd';
+        var clipUs = 'clip-us-' + uid;
+        var clipUk = 'clip-uk-' + uid;
+        return h(
+          'svg',
+          {
+            viewBox: '0 0 28 20',
+            className:
+              className +
+              ' rounded-[3px] shadow-sm shrink-0 overflow-hidden border border-white/20',
+            'aria-hidden': 'true',
+          },
+          h(
+            'defs',
+            null,
+            h(
+              'clipPath',
+              { id: clipUs },
+              h('polygon', { points: '0,0 28,0 0,20' })
+            ),
+            h(
+              'clipPath',
+              { id: clipUk },
+              h('polygon', { points: '28,0 28,20 0,20' })
+            )
+          ),
+          /* Metade Superior-Esquerda: Estados Unidos */
+          h(
+            'g',
+            { clipPath: 'url(#' + clipUs + ')' },
+            h('rect', { width: '28', height: '20', fill: '#FFFFFF' }),
+            h('rect', { y: '0', width: '28', height: '2.2', fill: '#B22234' }),
+            h('rect', { y: '4.4', width: '28', height: '2.2', fill: '#B22234' }),
+            h('rect', { y: '8.8', width: '28', height: '2.2', fill: '#B22234' }),
+            h('rect', { y: '13.2', width: '28', height: '2.2', fill: '#B22234' }),
+            h('rect', { y: '17.6', width: '28', height: '2.4', fill: '#B22234' }),
+            h('rect', { x: '0', y: '0', width: '13', height: '11', fill: '#3C3B6E' }),
+            h('circle', { cx: '3', cy: '2.8', r: '0.8', fill: '#FFFFFF' }),
+            h('circle', { cx: '6.5', cy: '2.8', r: '0.8', fill: '#FFFFFF' }),
+            h('circle', { cx: '10', cy: '2.8', r: '0.8', fill: '#FFFFFF' }),
+            h('circle', { cx: '4.7', cy: '5.5', r: '0.8', fill: '#FFFFFF' }),
+            h('circle', { cx: '8.2', cy: '5.5', r: '0.8', fill: '#FFFFFF' }),
+            h('circle', { cx: '3', cy: '8.2', r: '0.8', fill: '#FFFFFF' }),
+            h('circle', { cx: '6.5', cy: '8.2', r: '0.8', fill: '#FFFFFF' })
+          ),
+          /* Metade Inferior-Direita: Reino Unido */
+          h(
+            'g',
+            { clipPath: 'url(#' + clipUk + ')' },
+            h('rect', { width: '28', height: '20', fill: '#012169' }),
+            h('line', {
+              x1: '0',
+              y1: '0',
+              x2: '28',
+              y2: '20',
+              stroke: '#FFFFFF',
+              strokeWidth: '3.8',
+            }),
+            h('line', {
+              x1: '28',
+              y1: '0',
+              x2: '0',
+              y2: '20',
+              stroke: '#FFFFFF',
+              strokeWidth: '3.8',
+            }),
+            h('line', {
+              x1: '0',
+              y1: '0',
+              x2: '28',
+              y2: '20',
+              stroke: '#C8102E',
+              strokeWidth: '1.8',
+            }),
+            h('line', {
+              x1: '28',
+              y1: '0',
+              x2: '0',
+              y2: '20',
+              stroke: '#C8102E',
+              strokeWidth: '1.8',
+            }),
+            h('rect', { x: '11.2', y: '0', width: '5.6', height: '20', fill: '#FFFFFF' }),
+            h('rect', { x: '0', y: '7.2', width: '28', height: '5.6', fill: '#FFFFFF' }),
+            h('rect', { x: '12.3', y: '0', width: '3.4', height: '20', fill: '#C8102E' }),
+            h('rect', { x: '0', y: '8.3', width: '28', height: '3.4', fill: '#C8102E' })
+          ),
+          h('line', {
+            x1: '0',
+            y1: '20',
+            x2: '28',
+            y2: '0',
+            stroke: '#27292A',
+            strokeWidth: '1.1',
+          })
+        );
+      }
+
+      var CONTENT = {
+        pt: {
+          pageTitle: 'Eduardo Vieira | Psicólogo Clínico Online',
+          whatsappMessage:
+            'Olá, Eduardo! Vi a sua página e gostaria de saber mais sobre como agendar uma sessão de psicoterapia online.',
+          emailSubject: 'Contato - Agendamento de Sessão de Psicoterapia Online',
+          emailBody:
+            'Olá, Eduardo!\n\nVi a sua página e gostaria de saber mais informações sobre o agendamento de uma sessão de psicoterapia online.\n\nAtenciosamente,',
+          headerRole: 'Psicólogo Clínico • 100% Online',
+          nav: [
+            { label: 'Início', href: '#inicio' },
+            { label: 'Como Funciona a Terapia', href: '#como-funciona-terapia' },
+            { label: 'Para Quem É', href: '#para-quem' },
+            { label: 'Sobre Mim', href: '#sobre' },
+          ],
+          ctaSchedule: 'Agendar uma sessão',
+          ctaScheduleShort: 'Agendar',
+          menuLabel: 'Menu',
+          heroBadge: 'Psicoterapia 100% Online • Sem Barreiras Geográficas',
+          heroTitleStart: 'Um espaço seguro para compreender suas angústias e ',
+          heroTitleHighlight: 'ressignificar sua história.',
+          heroDescription:
+            'Atendimento psicológico 100% online, sem barreiras geográficas. Uma escuta estratégica, humana e acolhedora para adultos, idosos e pessoas LGBTQIAPN+ que buscam direção prática e profundidade emocional no conforto e sigilo do seu espaço.',
+          heroHowItWorksBtn: 'Entender como funciona ↓',
+          metaModalityTitle: 'Modalidade',
+          metaModalityValue: '100% Online • Atendimentos em português e inglês',
+          metaAudienceTitle: 'Públicos',
+          metaAudienceValue: 'Adultos, Idosos e LGBTQIAPN+',
+          metaEthicsTitle: 'Ética & Sigilo',
+          metaEthicsValue: 'Atendimento Individual',
+          roleTitle: 'Psicólogo Clínico',
+          heroCardFooter: 'Atendimentos em português e inglês • 100% Online',
+          therapyBadge: 'Base Histórico-Cultural • A Abordagem Clínica',
+          therapyTitle: 'Como Funciona a Terapia',
+          therapyImageCaption: 'Clínica Histórico-Cultural & TCC',
+          therapyImageAlt: 'Ilustração Base Histórico-Cultural',
+          therapyP1Before: 'Minha prática é fundamentada na ',
+          therapyP1Bold: 'Clínica Histórico-Cultural',
+          therapyP1After:
+            ', um espaço seguro de escuta sensível e de recriação de si e da sua realidade, que valida e respeita a sua história, suas raízes e o contexto social em que você está inserido. Entendo que o adoecimento, o sofrimento e a forma como vemos o mundo não são falhas puramente individuais, mas profundamente moldados pelas nossas vivências, identidades e pelo meio social.',
+          therapyP2Before:
+            'Por isso, conduzo a terapia com o foco em ampliar a sua consciência sobre si mesmo, ajudando a ressignificar sentimentos cristalizados e promovendo o desenvolvimento do autodomínio da conduta para que você possa assumir o protagonismo da sua vida. Para complementar essa visão sistêmica e acolhedora, integro recursos e estratégias da ',
+          therapyP2Bold: 'Terapia Cognitivo-Comportamental (TCC)',
+          therapyP2After:
+            '. Na prática, isso significa que, além de compreendermos o seu lugar no mundo, trabalharemos juntos com ferramentas pragmáticas para identificar padrões de pensamento disfuncionais, manejar sintomas de ansiedade e promover mudanças reais e estruturadas na sua rotina.',
+          audienceBadge: 'Públicos Atendidos',
+          audienceTitle: 'Para Quem É',
+          audiences: [
+            {
+              num: '01',
+              title: 'Adultos',
+              desc: 'Psicoterapia focada no autoconhecimento profundo, no manejo pragmático de sintomas e na reorganização consciente da rotina e das relações.',
+              items: [
+                'Manejo de ansiedade, estresse e esgotamento',
+                'Conflitos afetivos, familiares e profissionais',
+                'Mudança de padrões e autodomínio da conduta',
+              ],
+            },
+            {
+              num: '02',
+              title: 'Idosos',
+              desc: 'Escuta acolhedora e respeitosa às memórias, transições de vida e novos papéis sociais, promovendo saúde emocional, autonomia e qualidade de vida.',
+              items: [
+                'Adaptação a mudanças, aposentadoria e lutos',
+                'Fortalecimento de vínculos e prevenção da solidão',
+                'Valorização da biografia e novos projetos de sentido',
+              ],
+            },
+            {
+              num: '03',
+              title: 'Pessoas LGBTQIAPN+',
+              desc: 'Um espaço clínico ético, afirmativo e livre de julgamentos, que compreende os impactos sociais e históricos sobre a sua subjetividade e valida suas vivências.',
+              items: [
+                'Acolhimento afirmativo de identidade e sexualidade',
+                'Manejo do estresse de minoria e vivências sociais',
+                'Fortalecimento da autoestima, relações e autonomia',
+              ],
+            },
+          ],
+          aboutBadge: 'Sobre Mim',
+          aboutTitle: 'Presença humana, visão estratégica e compromisso com a sua transformação',
+          aboutP1Start: 'Olá! Sou ',
+          aboutP1Name: 'Eduardo Vieira',
+          aboutP1Middle:
+            ', psicólogo clínico graduado pela Universidade Católica de Santos (UniSantos) e pós-graduado pelo ',
+          aboutP1End:
+            '. Minha atuação é 100% dedicada ao atendimento online (em português e inglês) de adultos, idosos e pessoas LGBTQIAPN+, conectando rigor técnico, sensibilidade histórico-cultural e praticidade para acolher você onde quer que esteja.',
+          aboutP2:
+            'Acredito em uma psicologia ativa, dinâmica e sem posturas engessadas: um trabalho construído lado a lado com você, que valida a sua história com profundidade enquanto oferece ferramentas claras para lidar com os desafios reais do presente.',
+          /* Segunda foto (formatura) como a primeira no carrossel */
+          carouselPhotos: [
+            { src: PHOTO_2_URL, alt: 'Eduardo Vieira - Formatura em Psicologia' },
+            { src: PHOTO_URL, alt: 'Eduardo Vieira - Psicólogo Clínico' },
+            { src: PHOTO_3_URL, alt: 'Eduardo Vieira - Momento pessoal' },
+          ],
+          prevPhotoLabel: 'Foto anterior',
+          nextPhotoLabel: 'Próxima foto',
+          contactsLabel: 'Contatos & Redes',
+          footerSubtitle:
+            'Psicoterapia 100% Online (Português e Inglês) • Adultos, Idosos e Pessoas LGBTQIAPN+',
+          footerRights: 'Todos os direitos reservados.',
+          footerCrisis:
+            'Atenção: Este site não oferece atendimento de urgência. Em caso de crise, ligue 188 (CVV) ou procure o serviço de saúde mais próximo.',
+        },
+        en: {
+          pageTitle: 'Eduardo Vieira | Online Clinical Psychologist',
+          whatsappMessage:
+            'Hello, Eduardo! I visited your website and would like to know more about scheduling an online psychotherapy session.',
+          emailSubject: 'Contact - Online Psychotherapy Session Inquiry',
+          emailBody:
+            'Hello, Eduardo!\n\nI visited your website and would like more information about scheduling an online psychotherapy session.\n\nBest regards,',
+          headerRole: 'Clinical Psychologist • 100% Online',
+          nav: [
+            { label: 'Home', href: '#inicio' },
+            { label: 'How Therapy Works', href: '#como-funciona-terapia' },
+            { label: 'Who It Is For', href: '#para-quem' },
+            { label: 'About Me', href: '#sobre' },
+          ],
+          ctaSchedule: 'Book a session',
+          ctaScheduleShort: 'Book',
+          menuLabel: 'Menu',
+          heroBadge: '100% Online Psychotherapy • No Geographic Barriers',
+          heroTitleStart: 'A safe space to understand your distress and ',
+          heroTitleHighlight: 'reframe your story.',
+          heroDescription:
+            '100% online psychological care, without geographic barriers. Strategic, human, and welcoming listening for adults, older adults, and LGBTQIAPN+ individuals seeking practical direction and emotional depth in the comfort and privacy of their own space.',
+          heroHowItWorksBtn: 'Learn how it works ↓',
+          metaModalityTitle: 'Modality',
+          metaModalityValue: '100% Online • Sessions in Portuguese and English',
+          metaAudienceTitle: 'Audience',
+          metaAudienceValue: 'Adults, Seniors & LGBTQIAPN+',
+          metaEthicsTitle: 'Ethics & Privacy',
+          metaEthicsValue: 'Individual Sessions',
+          roleTitle: 'Clinical Psychologist',
+          heroCardFooter: 'Sessions in Portuguese & English • 100% Online',
+          therapyBadge: 'Historical-Cultural Foundation • Clinical Approach',
+          therapyTitle: 'How Therapy Works',
+          therapyImageCaption: 'Historical-Cultural Clinic & CBT',
+          therapyImageAlt: 'Historical-Cultural Foundation Illustration',
+          therapyP1Before: 'My practice is grounded in the ',
+          therapyP1Bold: 'Historical-Cultural Clinic',
+          therapyP1After:
+            ', a safe space for sensitive listening and for recreating yourself and your reality—validating and respecting your history, your roots, and the social context in which you live. I understand that emotional distress, suffering, and the way we see the world are not purely individual flaws, but are deeply shaped by our lived experiences, identities, and social environment.',
+          therapyP2Before:
+            'Therefore, I guide therapy with a focus on expanding your self-awareness, helping you reframe crystallized feelings, and fostering self-regulation so that you can become the protagonist of your own life. To complement this systemic and welcoming perspective, I integrate tools and strategies from ',
+          therapyP2Bold: 'Cognitive Behavioral Therapy (CBT)',
+          therapyP2After:
+            '. In practice, this means that beyond understanding your place in the world, we will work together with pragmatic tools to identify dysfunctional thought patterns, manage anxiety symptoms, and promote real, structured changes in your daily routine.',
+          audienceBadge: 'Who I Work With',
+          audienceTitle: 'Who It Is For',
+          audiences: [
+            {
+              num: '01',
+              title: 'Adults',
+              desc: 'Psychotherapy focused on deep self-knowledge, pragmatic symptom management, and the conscious reorganization of your routine and relationships.',
+              items: [
+                'Management of anxiety, stress, and burnout',
+                'Affective, family, and professional conflicts',
+                'Changing patterns and developing self-mastery',
+              ],
+            },
+            {
+              num: '02',
+              title: 'Older Adults (Seniors)',
+              desc: 'Welcoming and respectful listening to memories, life transitions, and new social roles, promoting emotional health, autonomy, and quality of life.',
+              items: [
+                'Adaptation to life changes, retirement, and grief',
+                'Strengthening bonds and preventing loneliness',
+                'Valuing personal biography and new meaningful projects',
+              ],
+            },
+            {
+              num: '03',
+              title: 'LGBTQIAPN+ Individuals',
+              desc: 'An ethical, affirmative, and judgment-free clinical space that understands social and historical impacts on your subjectivity and validates your lived experiences.',
+              items: [
+                'Affirmative support for identity and sexuality',
+                'Managing minority stress and social experiences',
+                'Strengthening self-esteem, relationships, and autonomy',
+              ],
+            },
+          ],
+          aboutBadge: 'About Me',
+          aboutTitle: 'Human presence, strategic vision, and commitment to your transformation',
+          aboutP1Start: 'Hello! I am ',
+          aboutP1Name: 'Eduardo Vieira',
+          aboutP1Middle:
+            ', a clinical psychologist graduated from the Catholic University of Santos (UniSantos) with a postgraduate specialization from ',
+          aboutP1End:
+            '. My practice is 100% dedicated to online psychotherapy (in Portuguese and English) for adults, older adults, and LGBTQIAPN+ individuals—combining technical rigor, historical-cultural sensitivity, and practicality to welcome you wherever you are.',
+          aboutP2:
+            'I believe in an active, dynamic psychology free of rigid postures: a collaborative process built side by side with you, validating your story with depth while offering clear tools to deal with real-life challenges in the present.',
+          /* Second photo (graduation) as the first slide in the carousel */
+          carouselPhotos: [
+            { src: PHOTO_2_URL, alt: 'Eduardo Vieira - Psychology Graduation' },
+            { src: PHOTO_URL, alt: 'Eduardo Vieira - Clinical Psychologist' },
+            { src: PHOTO_3_URL, alt: 'Eduardo Vieira - Personal moment' },
+          ],
+          prevPhotoLabel: 'Previous photo',
+          nextPhotoLabel: 'Next photo',
+          contactsLabel: 'Contact & Social Media',
+          footerSubtitle:
+            '100% Online Psychotherapy (Portuguese & English) • Adults, Seniors & LGBTQIAPN+',
+          footerRights: 'All rights reserved.',
+          footerCrisis:
+            'Note: This website does not provide emergency care. In case of crisis in Brazil, call 188 (CVV) or seek the nearest healthcare service.',
+        },
+      };
+
+      function App() {
+        var scrolledState = useState(false);
+        var scrolled = scrolledState[0];
+        var setScrolled = scrolledState[1];
+
+        var menuState = useState(false);
+        var mobileMenuOpen = menuState[0];
+        var setMobileMenuOpen = menuState[1];
+
+        var langState = useState('pt');
+        var lang = langState[0];
+        var setLang = langState[1];
+
+        var slideState = useState(0);
+        var currentSlide = slideState[0];
+        var setCurrentSlide = slideState[1];
+
+        var t = CONTENT[lang];
+        var whatsappUrl =
+          'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(t.whatsappMessage);
+        var emailUrl =
+          'mailto:' +
+          EMAIL_ADDRESS +
+          '?subject=' +
+          encodeURIComponent(t.emailSubject) +
+          '&body=' +
+          encodeURIComponent(t.emailBody);
+
+        useEffect(function () {
+          var handleScroll = function () {
+            setScrolled(window.scrollY > 20);
+          };
+          window.addEventListener('scroll', handleScroll);
+          return function () {
+            window.removeEventListener('scroll', handleScroll);
+          };
+        }, []);
+
+        useEffect(function () {
+          document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+          document.title = t.pageTitle;
+        }, [lang, t.pageTitle]);
+
+        var totalSlides = t.carouselPhotos.length;
+        var prevSlide = function () {
+          setCurrentSlide(function (prev) {
+            return (prev - 1 + totalSlides) % totalSlides;
+          });
+        };
+        var nextSlide = function () {
+          setCurrentSlide(function (prev) {
+            return (prev + 1) % totalSlides;
+          });
+        };
+
+        return h(
+          'div',
+          {
+            className:
+              'min-h-screen flex flex-col bg-[#F4F5F6] text-[#353839] font-sans antialiased selection:bg-[#B08D57]/20 selection:text-[#353839]',
+          },
+          /* HEADER */
+          h(
+            'header',
+            {
+              className:
+                'fixed top-0 left-0 right-0 z-40 transition-all duration-300 ' +
+                (scrolled
+                  ? 'bg-[#353839]/95 backdrop-blur-md shadow-md py-3'
+                  : 'bg-[#353839] py-4') +
+                ' border-b border-white/10',
+            },
+            h(
+              'div',
+              { className: 'max-w-6xl mx-auto px-5 sm:px-8' },
+              h(
+                'div',
+                { className: 'flex items-center justify-between gap-4' },
+                h(
+                  'a',
+                  {
+                    href: '#inicio',
+                    className: 'flex items-center gap-3.5 group shrink-0',
+                  },
+                  h('img', {
+                    src: PHOTO_URL,
+                    alt: 'Eduardo Vieira',
+                    className:
+                      'w-10 h-10 rounded-full object-cover object-top border border-[#B08D57] group-hover:opacity-90 transition-opacity duration-300',
+                  }),
+                  h(
+                    'div',
+                    null,
+                    h(
+                      'span',
+                      {
+                        className:
+                          'block text-white font-serif text-lg sm:text-xl font-medium tracking-wide leading-tight',
+                      },
+                      'Eduardo Vieira'
+                    ),
+                    h(
+                      'span',
+                      {
+                        className:
+                          'block text-[#D1D5DB] text-[11px] uppercase tracking-[0.18em]',
+                      },
+                      t.headerRole
+                    )
+                  )
+                ),
+                /* Desktop Nav */
+                h(
+                  'nav',
+                  { className: 'hidden md:flex items-center gap-5 lg:gap-7' },
+                  t.nav.map(function (item) {
+                    return h(
+                      'a',
+                      {
+                        key: item.href,
+                        href: item.href,
+                        className:
+                          'text-sm font-normal text-[#E5E7EB] hover:text-[#C5A572] transition-colors duration-200',
+                      },
+                      item.label
+                    );
+                  }),
+                  /* Language Switch Desktop com Bandeiras Divididas */
+                  h(
+                    'div',
+                    {
+                      className:
+                        'inline-flex items-center rounded-lg bg-[#27292A] p-0.5 text-xs font-medium text-[#D1D5DB]',
+                      role: 'group',
+                      'aria-label': 'Selecionar idioma / Select language',
+                    },
+                    h(
+                      'button',
+                      {
+                        type: 'button',
+                        title: 'Português (Brasil / Portugal)',
+                        onClick: function () {
+                          setLang('pt');
+                        },
+                        className:
+                          'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md transition-all ' +
+                          (lang === 'pt'
+                            ? 'bg-[#B08D57] text-white font-semibold'
+                            : 'text-[#D1D5DB] hover:text-white'),
+                      },
+                      h(FlagBrPt, { uid: 'desk' }),
+                      h('span', null, 'PT')
+                    ),
+                    h(
+                      'button',
+                      {
+                        type: 'button',
+                        title: 'English (USA / UK)',
+                        onClick: function () {
+                          setLang('en');
+                        },
+                        className:
+                          'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md transition-all ' +
+                          (lang === 'en'
+                            ? 'bg-[#B08D57] text-white font-semibold'
+                            : 'text-[#D1D5DB] hover:text-white'),
+                      },
+                      h(FlagUsUk, { uid: 'desk' }),
+                      h('span', null, 'EN')
+                    )
+                  ),
+                  h(
+                    'a',
+                    {
+                      href: whatsappUrl,
+                      target: '_blank',
+                      rel: 'noopener noreferrer',
+                      className:
+                        'px-5 py-2.5 rounded-lg bg-[#B08D57] hover:bg-[#C5A572] text-white font-medium text-sm transition-all duration-300',
+                    },
+                    t.ctaSchedule
+                  )
+                ),
+                /* Mobile Controls */
+                h(
+                  'div',
+                  { className: 'flex md:hidden items-center gap-2' },
+                  /* Language Switch Mobile com Bandeiras Divididas */
+                  h(
+                    'div',
+                    {
+                      className:
+                        'inline-flex items-center rounded-lg bg-[#27292A] p-0.5 text-[11px] font-medium text-[#D1D5DB]',
+                      role: 'group',
+                      'aria-label': 'Selecionar idioma / Select language',
+                    },
+                    h(
+                      'button',
+                      {
+                        type: 'button',
+                        title: 'Português (Brasil / Portugal)',
+                        onClick: function () {
+                          setLang('pt');
+                        },
+                        className:
+                          'inline-flex items-center gap-1 px-2 py-1 rounded-md transition-all ' +
+                          (lang === 'pt'
+                            ? 'bg-[#B08D57] text-white font-semibold'
+                            : 'text-[#D1D5DB] hover:text-white'),
+                      },
+                      h(FlagBrPt, { className: 'w-4 h-3', uid: 'mob' }),
+                      h('span', null, 'PT')
+                    ),
+                    h(
+                      'button',
+                      {
+                        type: 'button',
+                        title: 'English (USA / UK)',
+                        onClick: function () {
+                          setLang('en');
+                        },
+                        className:
+                          'inline-flex items-center gap-1 px-2 py-1 rounded-md transition-all ' +
+                          (lang === 'en'
+                            ? 'bg-[#B08D57] text-white font-semibold'
+                            : 'text-[#D1D5DB] hover:text-white'),
+                      },
+                      h(FlagUsUk, { className: 'w-4 h-3', uid: 'mob' }),
+                      h('span', null, 'EN')
+                    )
+                  ),
+                  h(
+                    'button',
+                    {
+                      type: 'button',
+                      onClick: function () {
+                        setMobileMenuOpen(!mobileMenuOpen);
+                      },
+                      'aria-expanded': mobileMenuOpen,
+                      'aria-label': 'Menu',
+                      className:
+                        'inline-flex items-center gap-1 px-2 py-1.5 text-[#E5E7EB] hover:text-[#C5A572] text-xs font-medium transition-colors',
+                    },
+                    h('span', null, t.menuLabel),
+                    h(
+                      'svg',
+                      {
+                        className:
+                          'w-4 h-4 text-[#C5A572] transition-transform duration-200 ' +
+                          (mobileMenuOpen ? 'rotate-180' : ''),
+                        fill: 'none',
+                        stroke: 'currentColor',
+                        strokeWidth: '2',
+                        viewBox: '0 0 24 24',
+                      },
+                      h('path', {
+                        strokeLinecap: 'round',
+                        strokeLinejoin: 'round',
+                        d: 'M19 9l-7 7-7-7',
+                      })
+                    )
+                  ),
+                  h(
+                    'a',
+                    {
+                      href: whatsappUrl,
+                      target: '_blank',
+                      rel: 'noopener noreferrer',
+                      className:
+                        'px-3 py-2 rounded-lg bg-[#B08D57] hover:bg-[#C5A572] text-white font-medium text-xs tracking-wide transition-all',
+                    },
+                    t.ctaScheduleShort
+                  )
+                )
+              ),
+              mobileMenuOpen
+                ? h(
+                    'div',
+                    { className: 'md:hidden mt-3 pt-2 border-t border-white/10' },
+                    h(
+                      'ul',
+                      { className: 'flex flex-col py-1' },
+                      t.nav.map(function (item) {
+                        return h(
+                          'li',
+                          { key: item.href },
+                          h(
+                            'a',
+                            {
+                              href: item.href,
+                              onClick: function () {
+                                setMobileMenuOpen(false);
+                              },
+                              className:
+                                'flex items-center justify-between py-2.5 px-2 text-[#E5E7EB] hover:text-[#C5A572] text-sm font-normal transition-colors',
+                            },
+                            h('span', null, item.label),
+                            h('span', { className: 'text-[#C5A572] text-xs' }, '↓')
+                          )
+                        );
+                      })
+                    )
+                  )
+                : null
+            )
+          ),
+
+          /* MAIN CONTENT */
+          h(
+            'main',
+            { className: 'flex-grow pt-16 sm:pt-20' },
+            /* 1. HERO SECTION */
+            h(
+              'section',
+              {
+                id: 'inicio',
+                className:
+                  'relative bg-[#353839] text-white overflow-hidden py-16 sm:py-24 border-b border-[#B08D57]/40',
+              },
+              h(
+                'div',
+                { className: 'max-w-6xl mx-auto px-5 sm:px-8 relative z-10' },
+                h(
+                  'div',
+                  { className: 'grid grid-cols-1 lg:grid-cols-12 gap-12 items-center' },
+                  /* Hero Text */
+                  h(
+                    'div',
+                    { className: 'lg:col-span-7 space-y-6' },
+                    h(
+                      'div',
+                      {
+                        className:
+                          'inline-flex items-center gap-2 text-[#C5A572] text-xs sm:text-sm uppercase tracking-[0.2em] font-medium',
+                      },
+                      h('span', { className: 'w-2 h-2 rounded-full bg-[#B08D57]' }),
+                      h('span', null, t.heroBadge)
+                    ),
+                    h(
+                      'h1',
+                      {
+                        className:
+                          'font-serif text-3xl sm:text-5xl lg:text-[52px] font-semibold text-white leading-[1.15] tracking-tight',
+                      },
+                      t.heroTitleStart,
+                      h(
+                        'span',
+                        { className: 'text-[#C5A572] italic font-normal' },
+                        t.heroTitleHighlight
+                      )
+                    ),
+                    h(
+                      'p',
+                      {
+                        className:
+                          'text-[#E5E7EB] text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl font-light',
+                      },
+                      t.heroDescription
+                    ),
+                    h(
+                      'div',
+                      {
+                        className:
+                          'pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4',
+                      },
+                      h(
+                        'a',
+                        {
+                          href: whatsappUrl,
+                          target: '_blank',
+                          rel: 'noopener noreferrer',
+                          className:
+                            'inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-[#B08D57] hover:bg-[#C5A572] active:bg-[#8C6D3F] text-white font-semibold text-base sm:text-lg shadow-lg shadow-black/20 transition-all duration-300 transform hover:-translate-y-0.5 text-center',
+                        },
+                        h('span', null, t.ctaSchedule),
+                        h(
+                          'svg',
+                          {
+                            className: 'w-5 h-5',
+                            fill: 'none',
+                            stroke: 'currentColor',
+                            strokeWidth: '2',
+                            viewBox: '0 0 24 24',
+                          },
+                          h('path', {
+                            strokeLinecap: 'round',
+                            strokeLinejoin: 'round',
+                            d: 'M17 8l4 4m0 0l-4 4m4-4H3',
+                          })
+                        )
+                      ),
+                      h(
+                        'a',
+                        {
+                          href: '#como-funciona-terapia',
+                          className:
+                            'inline-flex items-center justify-center px-6 py-4 text-[#E5E7EB] hover:text-[#C5A572] text-sm sm:text-base font-medium transition-colors duration-200 text-center',
+                        },
+                        t.heroHowItWorksBtn
+                      )
+                    ),
+                    h(
+                      'div',
+                      {
+                        className:
+                          'pt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-white/10 text-xs sm:text-sm text-[#D1D5DB]',
+                      },
+                      h(
+                        'div',
+                        null,
+                        h(
+                          'span',
+                          { className: 'block text-[#C5A572] font-medium' },
+                          t.metaModalityTitle
+                        ),
+                        h('span', null, t.metaModalityValue)
+                      ),
+                      h(
+                        'div',
+                        null,
+                        h(
+                          'span',
+                          { className: 'block text-[#C5A572] font-medium' },
+                          t.metaAudienceTitle
+                        ),
+                        h('span', null, t.metaAudienceValue)
+                      ),
+                      h(
+                        'div',
+                        null,
+                        h(
+                          'span',
+                          { className: 'block text-[#C5A572] font-medium' },
+                          t.metaEthicsTitle
+                        ),
+                        h('span', null, t.metaEthicsValue)
+                      )
+                    )
+                  ),
+                  /* Hero Photo */
+                  h(
+                    'div',
+                    { className: 'lg:col-span-5' },
+                    h(
+                      'div',
+                      { className: 'mx-auto max-w-sm lg:max-w-md' },
+                      h(
+                        'div',
+                        {
+                          className:
+                            'rounded-2xl bg-[#27292A] border border-white/10 overflow-hidden shadow-xl',
+                        },
+                        h(
+                          'div',
+                          {
+                            className:
+                              'relative aspect-[4/4.3] w-full overflow-hidden bg-[#353839]',
+                          },
+                          h('img', {
+                            src: PHOTO_URL,
+                            alt: 'Eduardo Vieira',
+                            className: 'w-full h-full object-cover object-center',
+                          }),
+                          h('div', {
+                            className:
+                              'absolute inset-0 bg-gradient-to-t from-[#27292A] via-transparent to-transparent',
+                          }),
+                          h(
+                            'div',
+                            { className: 'absolute bottom-4 left-5 right-5' },
+                            h(
+                              'span',
+                              {
+                                className:
+                                  'block text-[#C5A572] text-xs uppercase tracking-[0.18em] font-medium',
+                              },
+                              t.roleTitle
+                            ),
+                            h(
+                              'h2',
+                              {
+                                className:
+                                  'font-serif text-2xl sm:text-3xl text-white font-medium leading-tight',
+                              },
+                              'Eduardo Vieira'
+                            )
+                          )
+                        ),
+                        h(
+                          'div',
+                          {
+                            className:
+                              'p-5 bg-[#27292A] flex items-center justify-between text-xs text-[#D1D5DB]',
+                          },
+                          h('span', null, t.heroCardFooter),
+                          h(
+                            'a',
+                            {
+                              href: whatsappUrl,
+                              target: '_blank',
+                              rel: 'noopener noreferrer',
+                              className:
+                                'text-[#C5A572] hover:text-white font-medium transition-colors shrink-0 ml-2',
+                            },
+                            'WhatsApp →'
+                          )
+                        )
+                      )
+                    )
+                  )
+                )
+              )
+            ),
+
+            /* 2. COMO FUNCIONA A TERAPIA */
+            h(
+              'section',
+              {
+                id: 'como-funciona-terapia',
+                className:
+                  'scroll-mt-20 py-16 sm:py-24 bg-[#F4F5F6] text-[#353839] border-b border-[#E5E7EB]',
+              },
+              h(
+                'div',
+                { id: 'abordagem', className: 'max-w-5xl mx-auto px-5 sm:px-8' },
+                h(
+                  'div',
+                  { className: 'text-center max-w-2xl mx-auto mb-12' },
+                  h(
+                    'span',
+                    {
+                      className:
+                        'inline-block text-xs uppercase tracking-[0.22em] text-[#8C6D3F] font-semibold mb-2',
+                    },
+                    t.therapyBadge
+                  ),
+                  h(
+                    'h2',
+                    {
+                      className: 'font-serif text-3xl sm:text-4xl font-semibold text-[#353839]',
+                    },
+                    t.therapyTitle
+                  ),
+                  h('div', { className: 'w-12 h-0.5 bg-[#B08D57] mx-auto mt-4' })
+                ),
+                h(
+                  'div',
+                  {
+                    className:
+                      'rounded-2xl bg-white border border-[#E5E7EB] border-l-4 border-l-[#B08D57] shadow-sm p-7 sm:p-11 lg:p-12',
+                  },
+                  h(
+                    'div',
+                    { className: 'grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center' },
+                    h(
+                      'div',
+                      { className: 'lg:col-span-4 flex flex-col items-center justify-center' },
+                      h(
+                        'div',
+                        {
+                          className:
+                            'w-52 sm:w-60 lg:w-full max-w-[260px] aspect-square rounded-2xl bg-[#F4F5F6] border border-[#E5E7EB] p-6 flex items-center justify-center',
+                        },
+                        h('img', {
+                          src: PHC_IMAGE_URL,
+                          alt: t.therapyImageAlt,
+                          className: 'w-full h-full object-contain',
+                        })
+                      ),
+                      h(
+                        'span',
+                        {
+                          className:
+                            'mt-3 text-[11px] uppercase tracking-[0.18em] text-[#8C6D3F] font-medium text-center',
+                        },
+                        t.therapyImageCaption
+                      )
+                    ),
+                    h(
+                      'div',
+                      {
+                        className:
+                          'lg:col-span-8 space-y-5 text-[#353839] text-base sm:text-lg leading-relaxed sm:leading-[1.85] font-normal',
+                      },
+                      h(
+                        'p',
+                        null,
+                        t.therapyP1Before,
+                        h('strong', null, t.therapyP1Bold),
+                        t.therapyP1After
+                      ),
+                      h(
+                        'p',
+                        null,
+                        t.therapyP2Before,
+                        h('strong', null, t.therapyP2Bold),
+                        t.therapyP2After
+                      )
+                    )
+                  )
+                )
+              )
+            ),
+
+            /* 3. PARA QUEM É */
+            h(
+              'section',
+              {
+                id: 'para-quem',
+                className: 'scroll-mt-20 py-16 sm:py-24 bg-[#353839] text-white',
+              },
+              h(
+                'div',
+                { className: 'max-w-5xl mx-auto px-5 sm:px-8' },
+                h(
+                  'div',
+                  { className: 'text-center max-w-2xl mx-auto mb-12' },
+                  h(
+                    'span',
+                    {
+                      className:
+                        'inline-block text-xs uppercase tracking-[0.22em] text-[#C5A572] font-semibold mb-2',
+                    },
+                    t.audienceBadge
+                  ),
+                  h(
+                    'h2',
+                    { className: 'font-serif text-3xl sm:text-4xl font-semibold text-white' },
+                    t.audienceTitle
+                  ),
+                  h('div', { className: 'w-12 h-0.5 bg-[#B08D57] mx-auto mt-4' })
+                ),
+                h(
+                  'div',
+                  { className: 'grid grid-cols-1 md:grid-cols-3 gap-6' },
+                  t.audiences.map(function (aud) {
+                    return h(
+                      'div',
+                      {
+                        key: aud.num,
+                        className:
+                          'rounded-2xl bg-[#27292A] border border-white/10 p-7 flex flex-col justify-between',
+                      },
+                      h(
+                        'div',
+                        null,
+                        h(
+                          'span',
+                          {
+                            className:
+                              'text-xs font-semibold uppercase tracking-widest text-[#C5A572]',
+                          },
+                          aud.num
+                        ),
+                        h(
+                          'h3',
+                          {
+                            className:
+                              'font-serif text-2xl font-semibold text-white mt-1 mb-3',
+                          },
+                          aud.title
+                        ),
+                        h(
+                          'p',
+                          {
+                            className:
+                              'text-sm text-[#E5E7EB]/90 leading-relaxed mb-5 font-light',
+                          },
+                          aud.desc
+                        )
+                      ),
+                      h(
+                        'ul',
+                        {
+                          className:
+                            'space-y-2.5 text-xs sm:text-sm text-[#D1D5DB] border-t border-white/10 pt-4',
+                        },
+                        aud.items.map(function (it, idx) {
+                          return h(
+                            'li',
+                            { key: idx, className: 'flex items-center gap-2.5' },
+                            h('span', {
+                              className: 'w-1.5 h-1.5 rounded-full bg-[#B08D57] shrink-0',
+                            }),
+                            h('span', null, it)
+                          );
+                        })
+                      )
+                    );
+                  })
+                )
+              )
+            ),
+
+            /* 4. SOBRE MIM (Carrossel com 3 Fotos + Contatos) */
+            h(
+              'section',
+              {
+                id: 'sobre',
+                className: 'scroll-mt-20 py-16 sm:py-24 bg-[#F4F5F6] text-[#353839]',
+              },
+              h(
+                'div',
+                { className: 'max-w-5xl mx-auto px-5 sm:px-8' },
+                h(
+                  'div',
+                  { className: 'rounded-2xl bg-[#353839] text-white p-7 sm:p-12 shadow-xl' },
+                  h(
+                    'div',
+                    { className: 'grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center' },
+                    /* Coluna Carrossel de Fotos */
+                    h(
+                      'div',
+                      { className: 'lg:col-span-5 flex flex-col items-center text-center' },
+                      h(
+                        'div',
+                        {
+                          className:
+                            'relative w-64 sm:w-72 aspect-[4/4.5] rounded-2xl overflow-hidden border border-[#B08D57] shadow-lg bg-[#27292A] mb-4 group',
+                        },
+                        h('img', {
+                          src: t.carouselPhotos[currentSlide].src,
+                          alt: t.carouselPhotos[currentSlide].alt,
+                          className:
+                            'w-full h-full object-cover object-center transition-all duration-500',
+                        }),
+                        /* Prev Button */
+                        h(
+                          'button',
+                          {
+                            type: 'button',
+                            onClick: prevSlide,
+                            'aria-label': t.prevPhotoLabel,
+                            className:
+                              'absolute left-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#27292A]/80 hover:bg-[#B08D57] text-white flex items-center justify-center transition-colors shadow-md text-lg',
+                          },
+                          '‹'
+                        ),
+                        /* Next Button */
+                        h(
+                          'button',
+                          {
+                            type: 'button',
+                            onClick: nextSlide,
+                            'aria-label': t.nextPhotoLabel,
+                            className:
+                              'absolute right-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#27292A]/80 hover:bg-[#B08D57] text-white flex items-center justify-center transition-colors shadow-md text-lg',
+                          },
+                          '›'
+                        ),
+                        /* Dots */
+                        h(
+                          'div',
+                          {
+                            className:
+                              'absolute bottom-3 left-0 right-0 flex items-center justify-center gap-2',
+                          },
+                          t.carouselPhotos.map(function (_, idx) {
+                            return h('button', {
+                              key: idx,
+                              type: 'button',
+                              onClick: function () {
+                                setCurrentSlide(idx);
+                              },
+                              'aria-label': 'Slide ' + (idx + 1),
+                              className:
+                                'h-2 rounded-full transition-all ' +
+                                (currentSlide === idx
+                                  ? 'w-6 bg-[#B08D57]'
+                                  : 'w-2 bg-white/60 hover:bg-white'),
+                            });
+                          })
+                        )
+                      ),
+                      h(
+                        'span',
+                        {
+                          className:
+                            'text-xs uppercase tracking-[0.2em] text-[#C5A572] font-medium',
+                        },
+                        t.roleTitle
+                      ),
+                      h(
+                        'h2',
+                        {
+                          className: 'font-serif text-2xl sm:text-3xl font-medium text-white mt-1',
+                        },
+                        'Eduardo Vieira'
+                      )
+                    ),
+                    /* Coluna Texto + Contatos */
+                    h(
+                      'div',
+                      { className: 'lg:col-span-7 space-y-4' },
+                      h(
+                        'span',
+                        {
+                          className:
+                            'inline-block text-xs uppercase tracking-[0.2em] text-[#C5A572] font-semibold',
+                        },
+                        t.aboutBadge
+                      ),
+                      h(
+                        'h3',
+                        {
+                          className:
+                            'font-serif text-2xl sm:text-3xl font-medium text-white leading-snug',
+                        },
+                        t.aboutTitle
+                      ),
+                      h(
+                        'p',
+                        {
+                          className:
+                            'text-[#E5E7EB] text-base sm:text-lg leading-relaxed font-light',
+                        },
+                        t.aboutP1Start,
+                        h('strong', { className: 'text-white font-medium' }, t.aboutP1Name),
+                        t.aboutP1Middle,
+                        h('em', null, 'CBI of Miami'),
+                        t.aboutP1End
+                      ),
+                      h(
+                        'p',
+                        {
+                          className:
+                            'text-[#E5E7EB] text-base sm:text-lg leading-relaxed font-light',
+                        },
+                        t.aboutP2
+                      ),
+                      /* Bloco Contatos (E-mail direto com mensagem preenchida e Instagram) */
+                      h(
+                        'div',
+                        { className: 'pt-3 border-t border-white/10' },
+                        h(
+                          'span',
+                          {
+                            className:
+                              'block text-xs uppercase tracking-[0.18em] text-[#C5A572] font-medium mb-2.5',
+                          },
+                          t.contactsLabel
+                        ),
+                        h(
+                          'div',
+                          {
+                            className:
+                              'flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-6 text-sm text-[#E5E7EB]',
+                          },
+                          h(
+                            'a',
+                            {
+                              href: emailUrl,
+                              className:
+                                'inline-flex items-center gap-2 hover:text-[#C5A572] underline-offset-4 hover:underline transition-colors',
+                            },
+                            h('span', { className: 'text-[#C5A572] font-medium' }, 'E-mail:'),
+                            h('span', null, EMAIL_ADDRESS)
+                          ),
+                          h(
+                            'a',
+                            {
+                              href: INSTAGRAM_URL,
+                              target: '_blank',
+                              rel: 'noopener noreferrer',
+                              className:
+                                'inline-flex items-center gap-2 hover:text-[#C5A572] underline-offset-4 hover:underline transition-colors',
+                            },
+                            h('span', { className: 'text-[#C5A572] font-medium' }, 'Instagram:'),
+                            h('span', null, '@' + INSTAGRAM_HANDLE)
+                          )
+                        )
+                      ),
+                      h(
+                        'div',
+                        { className: 'pt-3' },
+                        h(
+                          'a',
+                          {
+                            href: whatsappUrl,
+                            target: '_blank',
+                            rel: 'noopener noreferrer',
+                            className:
+                              'inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-[#B08D57] hover:bg-[#C5A572] text-white font-semibold text-sm sm:text-base transition-all duration-300',
+                          },
+                          h('span', null, t.ctaSchedule),
+                          h('span', null, '→')
+                        )
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          ),
+
+          /* FOOTER */
+          h(
+            'footer',
+            {
+              className: 'bg-[#353839] text-[#E5E7EB] border-t border-[#B08D57]/40 py-10',
+            },
+            h(
+              'div',
+              { className: 'max-w-6xl mx-auto px-5 sm:px-8' },
+              h(
+                'div',
+                {
+                  className:
+                    'flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-white/10',
+                },
+                h(
+                  'div',
+                  { className: 'flex items-center gap-4' },
+                  h('img', {
+                    src: PHOTO_URL,
+                    alt: 'Eduardo Vieira',
+                    className:
+                      'w-11 h-11 rounded-full object-cover object-top border border-[#B08D57]',
+                  }),
+                  h(
+                    'div',
+                    null,
+                    h(
+                      'span',
+                      { className: 'font-serif text-xl text-white font-medium block' },
+                      'Eduardo Vieira • ' + t.roleTitle
+                    ),
+                    h(
+                      'p',
+                      { className: 'text-xs sm:text-sm text-[#D1D5DB] mt-0.5' },
+                      t.footerSubtitle
+                    ),
+                    h(
+                      'p',
+                      { className: 'mt-1 text-sm font-semibold text-[#C5A572]' },
+                      'CRP 06/200229'
+                    )
+                  )
+                ),
+                h(
+                  'div',
+                  { className: 'flex flex-col sm:items-end gap-2' },
+                  h(
+                    'a',
+                    {
+                      href: whatsappUrl,
+                      target: '_blank',
+                      rel: 'noopener noreferrer',
+                      className:
+                        'px-6 py-3 rounded-xl bg-[#B08D57] hover:bg-[#C5A572] text-white font-semibold text-sm transition-all duration-300 text-center',
+                    },
+                    'WhatsApp: +55 (13) 98121-6248'
+                  ),
+                  h(
+                    'div',
+                    {
+                      className: 'flex flex-wrap items-center gap-4 text-xs text-[#D1D5DB] pt-1',
+                    },
+                    h(
+                      'a',
+                      {
+                        href: emailUrl,
+                        className:
+                          'hover:text-[#C5A572] underline-offset-4 hover:underline transition-colors',
+                      },
+                      'E-mail: ' + EMAIL_ADDRESS
+                    ),
+                    h('span', null, '•'),
+                    h(
+                      'a',
+                      {
+                        href: INSTAGRAM_URL,
+                        target: '_blank',
+                        rel: 'noopener noreferrer',
+                        className:
+                          'hover:text-[#C5A572] underline-offset-4 hover:underline transition-colors',
+                      },
+                      'Instagram: @' + INSTAGRAM_HANDLE
+                    )
+                  )
+                )
+              ),
+              h(
+                'div',
+                {
+                  className:
+                    'pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#D1D5DB]',
+                },
+                h(
+                  'p',
+                  null,
+                  '© ' +
+                    new Date().getFullYear() +
+                    ' Eduardo Vieira — ' +
+                    t.roleTitle +
+                    ' (CRP 06/200229). ' +
+                    t.footerRights
+                ),
+                h(
+                  'p',
+                  { className: 'text-center sm:text-right text-[11px] text-[#D1D5DB]/80' },
+                  t.footerCrisis
+                )
+              )
+            )
+          ),
+
+          /* FLOATING WHATSAPP BUTTON */
+          h(
+            'a',
+            {
+              href: whatsappUrl,
+              target: '_blank',
+              rel: 'noopener noreferrer',
+              'aria-label': t.ctaSchedule,
+              className:
+                'fixed bottom-5 right-5 z-50 flex items-center gap-2.5 px-4 py-3.5 sm:px-5 sm:py-4 rounded-full bg-[#B08D57] hover:bg-[#C5A572] text-white shadow-xl transition-all duration-300 transform hover:scale-105 focus:outline-none',
+            },
+            h(
+              'svg',
+              {
+                className: 'w-6 h-6 fill-current shrink-0',
+                viewBox: '0 0 24 24',
+                'aria-hidden': 'true',
+              },
+              h('path', {
+                d: 'M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.126.556 4.124 1.529 5.857l-1.529 5.583 5.716-1.5c1.688.918 3.621 1.44 5.684 1.44 6.627 0 12-5.373 12-12s-5.373-12-11.4-11.38z',
+              })
+            ),
+            h(
+              'span',
+              { className: 'font-semibold text-xs sm:text-sm tracking-wide pr-1' },
+              t.ctaSchedule
+            )
+          )
+        );
+      }
+
+      var root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(h(App));
+    })();
+  </script>
+</body>
+</html>

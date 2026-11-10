@@ -1,0 +1,5 @@
+# Ignorar pasta de PDFs de estudo (301MB) e dependências locais
+Documentos básicos/
+node_modules/
+.DS_Store
+Thumbs.db

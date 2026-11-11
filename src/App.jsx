@@ -116,7 +116,6 @@ const CONTENT = {
     emailBody:
       'Olá, Eduardo!\n\nVi a sua página e gostaria de saber mais informações sobre o agendamento de uma sessão de psicoterapia online.\n\nAtenciosamente,',
     headerRole: 'Psicólogo Clínico • 100% Online',
-    headerRoleMobile: 'Psicólogo • 100% Online',
     nav: [
       { label: 'Início', href: '#inicio' },
       { label: 'Como Funciona a Terapia', href: '#como-funciona-terapia' },
@@ -124,8 +123,6 @@ const CONTENT = {
       { label: 'Sobre Mim', href: '#sobre' },
     ],
     ctaSchedule: 'Agendar uma sessão',
-    ctaScheduleShort: 'Agendar',
-    menuLabel: 'Menu',
     heroBadge: 'Psicoterapia 100% Online • Sem Barreiras Geográficas',
     heroTitleStart: 'Um espaço seguro para compreender suas angústias e ',
     heroTitleHighlight: 'ressignificar sua história.',
@@ -187,6 +184,10 @@ const CONTENT = {
         ],
       },
     ],
+    /* Carrossel de Painéis Cinza em Sobre Mim */
+    aboutPanelTabs: ['01 • Apresentação & Formação', '02 • Clínica, Arte & Histórias'],
+    prevPanelLabel: 'Painel anterior',
+    nextPanelLabel: 'Próximo painel',
     aboutBadge: 'Sobre Mim',
     aboutTitle: 'Presença humana, visão estratégica e compromisso com a sua transformação',
     aboutP1Start: 'Olá! Sou ',
@@ -197,21 +198,19 @@ const CONTENT = {
       '. Minha atuação é 100% dedicada ao atendimento online (em português e inglês) de adultos, idosos e pessoas LGBTQIAPN+, conectando rigor técnico, sensibilidade histórico-cultural e praticidade para acolher você onde quer que esteja.',
     aboutP2:
       'Acredito em uma psicologia ativa, dinâmica e sem posturas engessadas: um trabalho construído lado a lado com você, que valida a sua história com profundidade enquanto oferece ferramentas claras para lidar com os desafios reais do presente.',
-    /* Primeiro Carrossel: Fotos 2 e 1 (Foto 3 movida para o segundo carrossel) */
+    /* Fotos do Carrossel 1 (Apenas no Slide 1 do painel cinza) */
     carouselPhotos: [
       { src: PHOTO_2_URL, alt: 'Eduardo Vieira - Formatura em Psicologia' },
       { src: PHOTO_URL, alt: 'Eduardo Vieira - Psicólogo Clínico' },
     ],
-    /* Segundo Carrossel em Sobre Mim: Clínica & Arte com Foto 3 */
-    artBadge: 'Clínica, Arte & Histórias',
+    /* Slide 2 do Painel Cinza: Clínica & Arte com Foto 3 estática (sem carrossel na foto) */
+    artBadge: 'Sobre Mim • Clínica & Arte',
     artTitle: 'Onde a psicologia encontra o cinema, a literatura e os quadrinhos',
     artP1:
       'Para mim, a clínica e a arte sempre caminham juntas. Fora dos atendimentos, sou um grande apaixonado por cinema, livros e quadrinhos, e essa paixão é muito mais do que um passatempo: é uma extensão da forma como compreendo a complexidade do ser humano. Entendo que a arte tem o poder de reunir e conectar elementos que muitas vezes parecem distantes ou fragmentados na nossa vida cotidiana. Vejo na prática como se tornam instrumentos valiosos para a criação de novos sentidos.',
     artP2:
       'Acredito profundamente que as boas histórias nos humanizam e nos conectam. As aflições, os medos e as alegrias vividas por personagens e os sentimentos que experimentamos através deles são inteiramente reais. Gosto de pensar que a psicoterapia, assim como uma grande obra cinematográfica ou uma saga em quadrinhos, é um espaço seguro para vivenciar emoções, compreender o roteiro da sua própria vida e, principalmente, assumir a autoria da sua história.',
-    artCarouselPhotos: [
-      { src: PHOTO_3_URL, alt: 'Eduardo Vieira - Cinema, livros e quadrinhos' },
-    ],
+    artPhoto: { src: PHOTO_3_URL, alt: 'Eduardo Vieira - Cinema, livros e quadrinhos' },
     prevPhotoLabel: 'Foto anterior',
     nextPhotoLabel: 'Próxima foto',
     contactsLabel: 'Contatos & Redes',
@@ -229,7 +228,6 @@ const CONTENT = {
     emailBody:
       'Hello, Eduardo!\n\nI visited your website and would like more information about scheduling an online psychotherapy session.\n\nBest regards,',
     headerRole: 'Clinical Psychologist • 100% Online',
-    headerRoleMobile: 'Psychologist • 100% Online',
     nav: [
       { label: 'Home', href: '#inicio' },
       { label: 'How Therapy Works', href: '#como-funciona-terapia' },
@@ -237,8 +235,6 @@ const CONTENT = {
       { label: 'About Me', href: '#sobre' },
     ],
     ctaSchedule: 'Book a session',
-    ctaScheduleShort: 'Book',
-    menuLabel: 'Menu',
     heroBadge: '100% Online Psychotherapy • No Geographic Barriers',
     heroTitleStart: 'A safe space to understand your distress and ',
     heroTitleHighlight: 'reframe your story.',
@@ -300,6 +296,10 @@ const CONTENT = {
         ],
       },
     ],
+    /* Gray Panel Carousel in About Me */
+    aboutPanelTabs: ['01 • Background & Practice', '02 • Clinic, Art & Stories'],
+    prevPanelLabel: 'Previous panel',
+    nextPanelLabel: 'Next panel',
     aboutBadge: 'About Me',
     aboutTitle: 'Human presence, strategic vision, and commitment to your transformation',
     aboutP1Start: 'Hello! I am ',
@@ -310,21 +310,19 @@ const CONTENT = {
       '. My practice is 100% dedicated to online psychotherapy (in Portuguese and English) for adults, older adults, and LGBTQIAPN+ individuals—combining technical rigor, historical-cultural sensitivity, and practicality to welcome you wherever you are.',
     aboutP2:
       'I believe in an active, dynamic psychology free of rigid postures: a collaborative process built side by side with you, validating your story with depth while offering clear tools to deal with real-life challenges in the present.',
-    /* First Carousel: Photos 2 and 1 */
+    /* Photos for Slide 1 photo carousel */
     carouselPhotos: [
       { src: PHOTO_2_URL, alt: 'Eduardo Vieira - Psychology Graduation' },
       { src: PHOTO_URL, alt: 'Eduardo Vieira - Clinical Psychologist' },
     ],
-    /* Second Carousel in About Me: Clinic & Art with Photo 3 */
-    artBadge: 'Clinic, Art & Stories',
+    /* Slide 2 of Gray Panel: Clinic & Art with static Photo 3 (no photo carousel) */
+    artBadge: 'About Me • Clinic & Art',
     artTitle: 'Where psychology meets cinema, literature, and comic books',
     artP1:
       'For me, clinical practice and art always walk hand in hand. Outside of sessions, I am deeply passionate about cinema, books, and comic books—and this passion is much more than a hobby: it is an extension of how I understand human complexity. I see that art has the power to bring together and connect elements that often seem distant or fragmented in our everyday lives. In practice, I witness how they become valuable instruments for creating new meanings.',
     artP2:
       'I deeply believe that great stories humanize and connect us. The struggles, fears, and joys experienced by characters—and the emotions we feel through them—are entirely real. I like to think that psychotherapy, much like a great film or a comic book saga, is a safe space to experience emotions, understand the script of your own life, and above all, claim authorship of your own story.',
-    artCarouselPhotos: [
-      { src: PHOTO_3_URL, alt: 'Eduardo Vieira - Cinema, books, and comic books' },
-    ],
+    artPhoto: { src: PHOTO_3_URL, alt: 'Eduardo Vieira - Cinema, books, and comic books' },
     prevPhotoLabel: 'Previous photo',
     nextPhotoLabel: 'Next photo',
     contactsLabel: 'Contact & Social Media',
@@ -338,10 +336,11 @@ const CONTENT = {
 
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [lang, setLang] = useState('pt');
+  /* Slide das fotos dentro do Painel 1 */
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [currentArtSlide, setCurrentArtSlide] = useState(0);
+  /* Slide do Carrossel de Painéis Cinza em Sobre Mim (0 = Formação, 1 = Clínica & Arte) */
+  const [aboutPanelSlide, setAboutPanelSlide] = useState(0);
 
   const t = CONTENT[lang];
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
@@ -369,49 +368,45 @@ export default function App() {
   const nextSlide = () =>
     setCurrentSlide((prev) => (prev + 1) % totalSlides);
 
-  const totalArtSlides = t.artCarouselPhotos.length;
-  const safeArtSlide = currentArtSlide % totalArtSlides;
-  const prevArtSlide = () =>
-    setCurrentArtSlide((prev) => (prev - 1 + totalArtSlides) % totalArtSlides);
-  const nextArtSlide = () =>
-    setCurrentArtSlide((prev) => (prev + 1) % totalArtSlides);
+  const totalPanels = 2;
+  const prevPanel = () =>
+    setAboutPanelSlide((prev) => (prev - 1 + totalPanels) % totalPanels);
+  const nextPanel = () =>
+    setAboutPanelSlide((prev) => (prev + 1) % totalPanels);
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F4F5F6] text-[#353839] font-sans antialiased selection:bg-[#B08D57]/20 selection:text-[#353839]">
-      {/* Header / Navbar Responsivo para Mobile e Desktop */}
+      {/* Header / Navbar com TODAS as informações visíveis tanto no Mobile quanto no Desktop */}
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           scrolled
-            ? 'bg-[#353839]/95 backdrop-blur-md shadow-md py-2.5 sm:py-3'
-            : 'bg-[#353839] py-3 sm:py-4'
+            ? 'bg-[#353839]/95 backdrop-blur-md shadow-md py-2 sm:py-3'
+            : 'bg-[#353839] py-2.5 sm:py-4'
         } border-b border-white/10`}
       >
         <div className="max-w-6xl mx-auto px-3.5 sm:px-8">
+          {/* Linha Principal do Header (Desktop: tudo em 1 linha | Mobile: Identidade completa + Switch PT/EN + Agendar) */}
           <div className="flex items-center justify-between gap-2 sm:gap-4">
-            {/* Identidade no Topo (Compacta e proporcional no Mobile) */}
             <a
               href="#inicio"
-              className="flex items-center gap-2.5 sm:gap-3.5 group min-w-0 shrink"
+              className="flex items-center gap-2.5 sm:gap-3.5 group shrink-0"
             >
               <img
                 src={PHOTO_URL}
                 alt="Eduardo Vieira"
                 className="w-9 h-9 sm:w-10 sm:h-10 rounded-full object-cover object-top border border-[#B08D57] shrink-0 group-hover:opacity-90 transition-opacity duration-300"
               />
-              <div className="min-w-0">
-                <span className="block text-white font-serif text-base sm:text-xl font-medium tracking-wide leading-tight truncate">
+              <div>
+                <span className="block text-white font-serif text-base sm:text-xl font-medium tracking-wide leading-tight">
                   Eduardo Vieira
                 </span>
-                <span className="hidden sm:block text-[#D1D5DB] text-[11px] uppercase tracking-[0.18em]">
+                <span className="block text-[#D1D5DB] text-[9.5px] sm:text-[11px] uppercase tracking-[0.08em] sm:tracking-[0.18em]">
                   {t.headerRole}
-                </span>
-                <span className="block sm:hidden text-[#D1D5DB] text-[9.5px] uppercase tracking-[0.1em] truncate">
-                  {t.headerRoleMobile}
                 </span>
               </div>
             </a>
 
-            {/* Botões de navegação no topo sem contorno + Switch PT/EN com Bandeiras Divididas (Desktop) */}
+            {/* Navegação Desktop (md e acima) */}
             <nav className="hidden md:flex items-center gap-5 lg:gap-7 shrink-0">
               {t.nav.map((item) => (
                 <a
@@ -467,7 +462,7 @@ export default function App() {
               </a>
             </nav>
 
-            {/* Controles Mobile Otimizados (Sem aperto na tela) */}
+            {/* Controles Superiores Mobile: Switch PT/EN com Bandeiras + Botão Agendar */}
             <div className="flex md:hidden items-center gap-1.5 shrink-0">
               <div
                 className="inline-flex items-center rounded-lg bg-[#27292A] p-0.5 text-[10px] font-medium text-[#D1D5DB]"
@@ -506,59 +501,33 @@ export default function App() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-2.5 py-1.5 rounded-lg bg-[#B08D57] hover:bg-[#C5A572] text-white font-semibold text-[11px] tracking-wide transition-all"
+                className="px-2.5 py-1.5 rounded-lg bg-[#B08D57] hover:bg-[#C5A572] text-white font-semibold text-[11px] tracking-wide transition-all whitespace-nowrap"
               >
-                {t.ctaScheduleShort}
+                {t.ctaSchedule}
               </a>
-
-              <button
-                type="button"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                aria-expanded={mobileMenuOpen}
-                aria-label="Menu"
-                className="inline-flex items-center justify-center p-1.5 rounded-lg text-[#E5E7EB] hover:text-[#C5A572] transition-colors"
-              >
-                <svg
-                  className="w-5 h-5 text-[#C5A572]"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                >
-                  {mobileMenuOpen ? (
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                  ) : (
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                  )}
-                </svg>
-              </button>
             </div>
           </div>
 
-          {/* Menu Dropdown em Listagem Limpa (Mobile) */}
-          {mobileMenuOpen && (
-            <div className="md:hidden mt-2.5 pt-2 border-t border-white/10">
-              <ul className="flex flex-col py-1">
-                {t.nav.map((item) => (
-                  <li key={item.href}>
-                    <a
-                      href={item.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="flex items-center justify-between py-2.5 px-2 text-[#E5E7EB] hover:text-[#C5A572] text-sm font-normal transition-colors"
-                    >
-                      <span>{item.label}</span>
-                      <span className="text-[#C5A572] text-xs">↓</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+          {/* Segunda Linha do Header no Mobile: Todos os links de navegação sempre visíveis (sem esconder em menu) */}
+          <nav
+            aria-label="Navegação principal mobile"
+            className="flex md:hidden items-center justify-between gap-2 mt-2 pt-2 border-t border-white/10 overflow-x-auto no-scrollbar"
+          >
+            {t.nav.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-[11.5px] font-normal text-[#E5E7EB] hover:text-[#C5A572] transition-colors whitespace-nowrap py-0.5"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="flex-grow pt-14 sm:pt-20">
+      {/* Main Content (padding-top ajustado para o Header de 2 linhas no mobile e 1 linha no desktop) */}
+      <main className="flex-grow pt-24 sm:pt-28 md:pt-20">
         {/* 1. HERO SECTION (Primeira Dobra) */}
         <section
           id="inicio"
@@ -679,7 +648,7 @@ export default function App() {
         {/* 2. COMO FUNCIONA A TERAPIA (Base Histórico-Cultural com Ilustração) */}
         <section
           id="como-funciona-terapia"
-          className="scroll-mt-20 py-14 sm:py-24 bg-[#F4F5F6] text-[#353839] border-b border-[#E5E7EB]"
+          className="scroll-mt-28 md:scroll-mt-20 py-14 sm:py-24 bg-[#F4F5F6] text-[#353839] border-b border-[#E5E7EB]"
         >
           <div id="abordagem" className="max-w-5xl mx-auto px-5 sm:px-8">
             <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
@@ -729,7 +698,7 @@ export default function App() {
         {/* 3. PARA QUEM É (01, 02 e 03) */}
         <section
           id="para-quem"
-          className="scroll-mt-20 py-14 sm:py-24 bg-[#353839] text-white"
+          className="scroll-mt-28 md:scroll-mt-20 py-14 sm:py-24 bg-[#353839] text-white"
         >
           <div className="max-w-5xl mx-auto px-5 sm:px-8">
             <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
@@ -773,202 +742,259 @@ export default function App() {
           </div>
         </section>
 
-        {/* 4. SOBRE MIM (Dois blocos idênticos com Carrossel: 1. Formação & Prática | 2. Clínica & Arte) */}
+        {/* 4. SOBRE MIM (Painéis Cinza Juntos como um Único Carrossel) */}
         <section
           id="sobre"
-          className="scroll-mt-20 py-14 sm:py-24 bg-[#F4F5F6] text-[#353839]"
+          className="scroll-mt-28 md:scroll-mt-20 py-14 sm:py-24 bg-[#F4F5F6] text-[#353839]"
         >
-          <div className="max-w-5xl mx-auto px-5 sm:px-8 space-y-8 sm:space-y-10">
-            {/* BLOCO 1: Apresentação Profissional (Fotos 2 e 1) */}
-            <div className="rounded-2xl bg-[#353839] text-white p-6 sm:p-12 shadow-xl">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                {/* Coluna do Carrossel 1 (Fotos 2 e 1) */}
-                <div className="lg:col-span-5 flex flex-col items-center text-center">
-                  <div className="relative w-full max-w-[260px] sm:w-72 aspect-[4/4.5] rounded-2xl overflow-hidden border border-[#B08D57] shadow-lg bg-[#27292A] mb-4 group">
-                    <img
-                      src={t.carouselPhotos[safeSlide].src}
-                      alt={t.carouselPhotos[safeSlide].alt}
-                      className="w-full h-full object-cover object-center transition-all duration-500"
-                    />
-
-                    {/* Botão Anterior */}
+          <div className="max-w-5xl mx-auto px-5 sm:px-8">
+            <div className="relative rounded-2xl bg-[#353839] text-white p-6 sm:p-12 shadow-xl">
+              {/* Barra Superior do Carrossel de Painéis Cinza (Abas + Setas ‹ ›) */}
+              <div className="flex flex-wrap items-center justify-between gap-3 pb-6 mb-6 border-b border-white/10">
+                <div className="flex flex-wrap items-center gap-2">
+                  {t.aboutPanelTabs.map((tabLabel, idx) => (
                     <button
+                      key={idx}
                       type="button"
-                      onClick={prevSlide}
-                      aria-label={t.prevPhotoLabel}
-                      className="absolute left-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#27292A]/80 hover:bg-[#B08D57] text-white flex items-center justify-center transition-colors shadow-md"
+                      onClick={() => setAboutPanelSlide(idx)}
+                      className={`px-3.5 py-1.5 rounded-lg text-xs font-medium tracking-wide transition-all ${
+                        aboutPanelSlide === idx
+                          ? 'bg-[#B08D57] text-white shadow-sm'
+                          : 'bg-[#27292A] text-[#D1D5DB] hover:text-white'
+                      }`}
                     >
-                      ‹
+                      {tabLabel}
                     </button>
-
-                    {/* Botão Próximo */}
-                    <button
-                      type="button"
-                      onClick={nextSlide}
-                      aria-label={t.nextPhotoLabel}
-                      className="absolute right-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#27292A]/80 hover:bg-[#B08D57] text-white flex items-center justify-center transition-colors shadow-md"
-                    >
-                      ›
-                    </button>
-
-                    {/* Indicadores (Dots) */}
-                    <div className="absolute bottom-3 left-0 right-0 flex items-center justify-center gap-2">
-                      {t.carouselPhotos.map((_, idx) => (
-                        <button
-                          key={idx}
-                          type="button"
-                          onClick={() => setCurrentSlide(idx)}
-                          aria-label={`Slide ${idx + 1}`}
-                          className={`h-2 rounded-full transition-all ${
-                            safeSlide === idx
-                              ? 'w-6 bg-[#B08D57]'
-                              : 'w-2 bg-white/60 hover:bg-white'
-                          }`}
-                        />
-                      ))}
-                    </div>
-                  </div>
-
-                  <span className="text-xs uppercase tracking-[0.2em] text-[#C5A572] font-medium">
-                    {t.roleTitle}
-                  </span>
-                  <h2 className="font-serif text-2xl sm:text-3xl font-medium text-white mt-1">
-                    Eduardo Vieira
-                  </h2>
+                  ))}
                 </div>
 
-                {/* Coluna da Mini-Biografia */}
-                <div className="lg:col-span-7 space-y-4">
-                  <span className="inline-block text-xs uppercase tracking-[0.2em] text-[#C5A572] font-semibold">
-                    {t.aboutBadge}
-                  </span>
-                  <h3 className="font-serif text-2xl sm:text-3xl font-medium text-white leading-snug">
-                    {t.aboutTitle}
-                  </h3>
-                  <p className="text-[#E5E7EB] text-base sm:text-lg leading-relaxed font-light">
-                    {t.aboutP1Start}
-                    <strong className="text-white font-medium">{t.aboutP1Name}</strong>
-                    {t.aboutP1Middle}
-                    <em>CBI of Miami</em>
-                    {t.aboutP1End}
-                  </p>
-                  <p className="text-[#E5E7EB] text-base sm:text-lg leading-relaxed font-light">
-                    {t.aboutP2}
-                  </p>
+                {/* Setas de Navegação entre os 2 Painéis Cinza */}
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={prevPanel}
+                    aria-label={t.prevPanelLabel}
+                    className="w-9 h-9 rounded-full bg-[#27292A] hover:bg-[#B08D57] text-white flex items-center justify-center transition-colors border border-white/10 text-lg"
+                  >
+                    ‹
+                  </button>
+                  <button
+                    type="button"
+                    onClick={nextPanel}
+                    aria-label={t.nextPanelLabel}
+                    className="w-9 h-9 rounded-full bg-[#27292A] hover:bg-[#B08D57] text-white flex items-center justify-center transition-colors border border-white/10 text-lg"
+                  >
+                    ›
+                  </button>
                 </div>
               </div>
-            </div>
 
-            {/* BLOCO 2: Carrossel Idêntico — Clínica, Arte, Cinema, Livros e Quadrinhos (Foto 3) */}
-            <div className="rounded-2xl bg-[#353839] text-white p-6 sm:p-12 shadow-xl">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                {/* Coluna do Carrossel 2 (Foto 3) */}
-                <div className="lg:col-span-5 flex flex-col items-center text-center">
-                  <div className="relative w-full max-w-[260px] sm:w-72 aspect-[4/4.5] rounded-2xl overflow-hidden border border-[#B08D57] shadow-lg bg-[#27292A] mb-4 group">
-                    <img
-                      src={t.artCarouselPhotos[safeArtSlide].src}
-                      alt={t.artCarouselPhotos[safeArtSlide].alt}
-                      className="w-full h-full object-cover object-center transition-all duration-500"
-                    />
+              {/* SLIDE 1 DO PAINEL CINZA: Formação & Prática (Com carrossel de 2 fotos: foto 2 e foto 1) */}
+              {aboutPanelSlide === 0 ? (
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                  {/* Coluna da Foto com Carrossel (Fotos 2 e 1) */}
+                  <div className="lg:col-span-5 flex flex-col items-center text-center">
+                    <div className="relative w-full max-w-[260px] sm:w-72 aspect-[4/4.5] rounded-2xl overflow-hidden border border-[#B08D57] shadow-lg bg-[#27292A] mb-4 group">
+                      <img
+                        src={t.carouselPhotos[safeSlide].src}
+                        alt={t.carouselPhotos[safeSlide].alt}
+                        className="w-full h-full object-cover object-center transition-all duration-500"
+                      />
 
-                    {/* Botão Anterior */}
-                    <button
-                      type="button"
-                      onClick={prevArtSlide}
-                      aria-label={t.prevPhotoLabel}
-                      className="absolute left-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#27292A]/80 hover:bg-[#B08D57] text-white flex items-center justify-center transition-colors shadow-md"
-                    >
-                      ‹
-                    </button>
+                      {/* Botão Anterior da Foto */}
+                      <button
+                        type="button"
+                        onClick={prevSlide}
+                        aria-label={t.prevPhotoLabel}
+                        className="absolute left-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#27292A]/80 hover:bg-[#B08D57] text-white flex items-center justify-center transition-colors shadow-md"
+                      >
+                        ‹
+                      </button>
 
-                    {/* Botão Próximo */}
-                    <button
-                      type="button"
-                      onClick={nextArtSlide}
-                      aria-label={t.nextPhotoLabel}
-                      className="absolute right-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#27292A]/80 hover:bg-[#B08D57] text-white flex items-center justify-center transition-colors shadow-md"
-                    >
-                      ›
-                    </button>
+                      {/* Botão Próximo da Foto */}
+                      <button
+                        type="button"
+                        onClick={nextSlide}
+                        aria-label={t.nextPhotoLabel}
+                        className="absolute right-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#27292A]/80 hover:bg-[#B08D57] text-white flex items-center justify-center transition-colors shadow-md"
+                      >
+                        ›
+                      </button>
 
-                    {/* Indicadores (Dots) */}
-                    <div className="absolute bottom-3 left-0 right-0 flex items-center justify-center gap-2">
-                      {t.artCarouselPhotos.map((_, idx) => (
-                        <button
-                          key={idx}
-                          type="button"
-                          onClick={() => setCurrentArtSlide(idx)}
-                          aria-label={`Slide ${idx + 1}`}
-                          className={`h-2 rounded-full transition-all ${
-                            safeArtSlide === idx
-                              ? 'w-6 bg-[#B08D57]'
-                              : 'w-2 bg-white/60 hover:bg-white'
-                          }`}
-                        />
-                      ))}
+                      {/* Indicadores da Foto */}
+                      <div className="absolute bottom-3 left-0 right-0 flex items-center justify-center gap-2">
+                        {t.carouselPhotos.map((_, idx) => (
+                          <button
+                            key={idx}
+                            type="button"
+                            onClick={() => setCurrentSlide(idx)}
+                            aria-label={`Foto ${idx + 1}`}
+                            className={`h-2 rounded-full transition-all ${
+                              safeSlide === idx
+                                ? 'w-6 bg-[#B08D57]'
+                                : 'w-2 bg-white/60 hover:bg-white'
+                            }`}
+                          />
+                        ))}
+                      </div>
                     </div>
+
+                    <span className="text-xs uppercase tracking-[0.2em] text-[#C5A572] font-medium">
+                      {t.roleTitle}
+                    </span>
+                    <h2 className="font-serif text-2xl sm:text-3xl font-medium text-white mt-1">
+                      Eduardo Vieira
+                    </h2>
                   </div>
 
-                  <span className="text-xs uppercase tracking-[0.2em] text-[#C5A572] font-medium">
-                    {t.roleTitle}
-                  </span>
-                  <h2 className="font-serif text-2xl sm:text-3xl font-medium text-white mt-1">
-                    Eduardo Vieira
-                  </h2>
-                </div>
-
-                {/* Coluna do Texto sobre Clínica, Arte, Cinema, Livros e Quadrinhos + Contatos */}
-                <div className="lg:col-span-7 space-y-4">
-                  <span className="inline-block text-xs uppercase tracking-[0.2em] text-[#C5A572] font-semibold">
-                    {t.artBadge}
-                  </span>
-                  <h3 className="font-serif text-2xl sm:text-3xl font-medium text-white leading-snug">
-                    {t.artTitle}
-                  </h3>
-                  <p className="text-[#E5E7EB] text-base sm:text-lg leading-relaxed font-light">
-                    {t.artP1}
-                  </p>
-                  <p className="text-[#E5E7EB] text-base sm:text-lg leading-relaxed font-light">
-                    {t.artP2}
-                  </p>
-
-                  {/* Bloco de Contatos (E-mail direto com mensagem preenchida e Instagram) */}
-                  <div className="pt-3 border-t border-white/10">
-                    <span className="block text-xs uppercase tracking-[0.18em] text-[#C5A572] font-medium mb-2.5">
-                      {t.contactsLabel}
+                  {/* Coluna da Mini-Biografia + Contatos */}
+                  <div className="lg:col-span-7 space-y-4">
+                    <span className="inline-block text-xs uppercase tracking-[0.2em] text-[#C5A572] font-semibold">
+                      {t.aboutBadge}
                     </span>
-                    <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-6 text-sm text-[#E5E7EB]">
+                    <h3 className="font-serif text-2xl sm:text-3xl font-medium text-white leading-snug">
+                      {t.aboutTitle}
+                    </h3>
+                    <p className="text-[#E5E7EB] text-base sm:text-lg leading-relaxed font-light">
+                      {t.aboutP1Start}
+                      <strong className="text-white font-medium">{t.aboutP1Name}</strong>
+                      {t.aboutP1Middle}
+                      <em>CBI of Miami</em>
+                      {t.aboutP1End}
+                    </p>
+                    <p className="text-[#E5E7EB] text-base sm:text-lg leading-relaxed font-light">
+                      {t.aboutP2}
+                    </p>
+
+                    {/* Bloco de Contatos */}
+                    <div className="pt-3 border-t border-white/10">
+                      <span className="block text-xs uppercase tracking-[0.18em] text-[#C5A572] font-medium mb-2.5">
+                        {t.contactsLabel}
+                      </span>
+                      <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-6 text-sm text-[#E5E7EB]">
+                        <a
+                          href={emailUrl}
+                          className="inline-flex items-center gap-2 hover:text-[#C5A572] underline-offset-4 hover:underline transition-colors break-all"
+                        >
+                          <span className="text-[#C5A572] font-medium shrink-0">E-mail:</span>
+                          <span>{EMAIL_ADDRESS}</span>
+                        </a>
+                        <a
+                          href={INSTAGRAM_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 hover:text-[#C5A572] underline-offset-4 hover:underline transition-colors"
+                        >
+                          <span className="text-[#C5A572] font-medium shrink-0">Instagram:</span>
+                          <span>@{INSTAGRAM_HANDLE}</span>
+                        </a>
+                      </div>
+                    </div>
+
+                    <div className="pt-3">
                       <a
-                        href={emailUrl}
-                        className="inline-flex items-center gap-2 hover:text-[#C5A572] underline-offset-4 hover:underline transition-colors break-all"
-                      >
-                        <span className="text-[#C5A572] font-medium shrink-0">E-mail:</span>
-                        <span>{EMAIL_ADDRESS}</span>
-                      </a>
-                      <a
-                        href={INSTAGRAM_URL}
+                        href={whatsappUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 hover:text-[#C5A572] underline-offset-4 hover:underline transition-colors"
+                        className="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-7 py-3.5 rounded-xl bg-[#B08D57] hover:bg-[#C5A572] text-white font-semibold text-sm sm:text-base transition-all duration-300"
                       >
-                        <span className="text-[#C5A572] font-medium shrink-0">Instagram:</span>
-                        <span>@{INSTAGRAM_HANDLE}</span>
+                        <span>{t.ctaSchedule}</span>
+                        <span>→</span>
                       </a>
                     </div>
                   </div>
+                </div>
+              ) : (
+                /* SLIDE 2 DO PAINEL CINZA: Clínica, Arte, Cinema, Livros e Quadrinhos (Foto 3 Estática, SEM carrossel na foto) */
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                  {/* Coluna da Foto 3 Estática (Sem setas de carrossel na foto) */}
+                  <div className="lg:col-span-5 flex flex-col items-center text-center">
+                    <div className="relative w-full max-w-[260px] sm:w-72 aspect-[4/4.5] rounded-2xl overflow-hidden border border-[#B08D57] shadow-lg bg-[#27292A] mb-4">
+                      <img
+                        src={t.artPhoto.src}
+                        alt={t.artPhoto.alt}
+                        className="w-full h-full object-cover object-center"
+                      />
+                    </div>
 
-                  <div className="pt-3">
-                    <a
-                      href={whatsappUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-7 py-3.5 rounded-xl bg-[#B08D57] hover:bg-[#C5A572] text-white font-semibold text-sm sm:text-base transition-all duration-300"
-                    >
-                      <span>{t.ctaSchedule}</span>
-                      <span>→</span>
-                    </a>
+                    <span className="text-xs uppercase tracking-[0.2em] text-[#C5A572] font-medium">
+                      {t.roleTitle}
+                    </span>
+                    <h2 className="font-serif text-2xl sm:text-3xl font-medium text-white mt-1">
+                      Eduardo Vieira
+                    </h2>
+                  </div>
+
+                  {/* Coluna do Texto sobre Clínica, Arte, Cinema, Livros e Quadrinhos + Contatos */}
+                  <div className="lg:col-span-7 space-y-4">
+                    <span className="inline-block text-xs uppercase tracking-[0.2em] text-[#C5A572] font-semibold">
+                      {t.artBadge}
+                    </span>
+                    <h3 className="font-serif text-2xl sm:text-3xl font-medium text-white leading-snug">
+                      {t.artTitle}
+                    </h3>
+                    <p className="text-[#E5E7EB] text-base sm:text-lg leading-relaxed font-light">
+                      {t.artP1}
+                    </p>
+                    <p className="text-[#E5E7EB] text-base sm:text-lg leading-relaxed font-light">
+                      {t.artP2}
+                    </p>
+
+                    {/* Bloco de Contatos */}
+                    <div className="pt-3 border-t border-white/10">
+                      <span className="block text-xs uppercase tracking-[0.18em] text-[#C5A572] font-medium mb-2.5">
+                        {t.contactsLabel}
+                      </span>
+                      <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-6 text-sm text-[#E5E7EB]">
+                        <a
+                          href={emailUrl}
+                          className="inline-flex items-center gap-2 hover:text-[#C5A572] underline-offset-4 hover:underline transition-colors break-all"
+                        >
+                          <span className="text-[#C5A572] font-medium shrink-0">E-mail:</span>
+                          <span>{EMAIL_ADDRESS}</span>
+                        </a>
+                        <a
+                          href={INSTAGRAM_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 hover:text-[#C5A572] underline-offset-4 hover:underline transition-colors"
+                        >
+                          <span className="text-[#C5A572] font-medium shrink-0">Instagram:</span>
+                          <span>@{INSTAGRAM_HANDLE}</span>
+                        </a>
+                      </div>
+                    </div>
+
+                    <div className="pt-3">
+                      <a
+                        href={whatsappUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-7 py-3.5 rounded-xl bg-[#B08D57] hover:bg-[#C5A572] text-white font-semibold text-sm sm:text-base transition-all duration-300"
+                      >
+                        <span>{t.ctaSchedule}</span>
+                        <span>→</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
+              )}
+
+              {/* Indicadores Inferiores do Carrossel de Painéis Cinza */}
+              <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-center gap-3">
+                {[0, 1].map((idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => setAboutPanelSlide(idx)}
+                    aria-label={t.aboutPanelTabs[idx]}
+                    className={`h-2.5 rounded-full transition-all ${
+                      aboutPanelSlide === idx
+                        ? 'w-8 bg-[#B08D57]'
+                        : 'w-2.5 bg-white/40 hover:bg-white/70'
+                    }`}
+                  />
+                ))}
               </div>
             </div>
           </div>

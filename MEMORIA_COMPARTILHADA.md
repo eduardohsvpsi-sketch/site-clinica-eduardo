@@ -28,10 +28,11 @@ Este arquivo funciona como a ponte de comunicação em tempo real entre todos os
    - **Switch de Idioma `PT / EN` no Header:** Tradução instantânea Português/Inglês com bandeiras divididas em SVG (`Brasil/Portugal` em `PT` e `EUA/Reino Unido` em `EN`).
    - **Modalidade:** `100% Online • Atendimentos em português e inglês`.
    - **Contatos Diretos:** WhatsApp (`+55 13 98121-6248`), E-mail com mensagem pré-preenchida (`eduardohsv.psi@gmail.com`) e Instagram (`@culturaehistoriapsi`).
-   - **Dois Carrosséis Idênticos em "Sobre Mim":**
-     - **Carrossel 1 (Apresentação Profissional):** `eduardo-foto-2.jpg` (formatura) e `eduardo-foto.jpg` (retrato profissional).
-     - **Carrossel 2 (Clínica, Arte, Cinema, Livros e Quadrinhos):** `eduardo-foto-3.jpg` acompanhada do texto autoral sobre clínica, cinema, literatura e quadrinhos (em PT e EN).
-   - **Header & Layout Mobile Otimizados:** Cabeçalho compacto para telas de celular com subtítulo responsivo, switch `PT/EN` com bandeiras divididas, botão `Agendar` e ícone hambúrguer/fechar.
+   - **Carrossel de Painéis Cinza em "Sobre Mim":**
+     - Os dois painéis cinza escuro (`#353839`) em "Sobre Mim" funcionam juntos como um único carrossel de painéis (`01 • Apresentação & Formação` e `02 • Clínica, Arte & Histórias`), com abas, setas `‹` / `›` e indicadores inferiores.
+     - **Painel 1 (Apresentação & Formação):** Possui carrossel de fotos com `eduardo-foto-2.jpg` (formatura) e `eduardo-foto.jpg` (retrato profissional).
+     - **Painel 2 (Clínica, Arte & Histórias):** Exibe `eduardo-foto-3.jpg` como foto estática (sem sub-carrossel na foto) acompanhada do texto autoral sobre clínica, cinema, literatura e quadrinhos (em PT e EN).
+   - **Header Mobile com Todas as Informações Visíveis:** No celular, o Header exibe 100% das informações sem esconder nada em menu hambúrguer: Linha 1 com Foto, Nome (`Eduardo Vieira`), Subtítulo completo (`Psicólogo Clínico • 100% Online`), Switch `PT/EN` com bandeiras divididas e botão `Agendar uma sessão`; Linha 2 com todos os links de navegação (`Início`, `Como Funciona a Terapia`, `Para Quem É`, `Sobre Mim`) sempre visíveis.
 4. **Repositório GitHub & Deploy (Git Push Automático):**
    - Repositório conectado: `https://github.com/eduardohsvpsi-sketch/site-clinica-eduardo.git` (branch `main`).
    - **Regra ativa:** Todas as atualizações devem ser enviadas automaticamente via `git push origin main --force`.

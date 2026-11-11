@@ -23,6 +23,22 @@ const MIME_TYPES = {
 
 const server = http.createServer((req, res) => {
   const reqPath = req.url.split('?')[0];
+
+  if (reqPath === '/__version') {
+    try {
+      const stat = fs.statSync(path.join(__dirname, 'index.html'));
+      res.writeHead(200, {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Cache-Control': 'no-store, no-cache, must-revalidate',
+      });
+      res.end(JSON.stringify({ mtimeMs: stat.mtimeMs }));
+    } catch {
+      res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ mtimeMs: 0 }));
+    }
+    return;
+  }
+
   let filePath = path.join(__dirname, reqPath === '/' ? 'index.html' : reqPath);
 
   if (!fs.existsSync(filePath) || fs.statSync(filePath).isDirectory()) {

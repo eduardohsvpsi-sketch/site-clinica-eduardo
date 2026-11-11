@@ -1691,6 +1691,29 @@
 
       var root = ReactDOM.createRoot(document.getElementById('root'));
       root.render(h(App));
+
+      /* Auto-reload no localhost quando o arquivo index.html é atualizado */
+      if (
+        window.location.hostname === 'localhost' ||
+        window.location.hostname === '127.0.0.1'
+      ) {
+        var lastVersion = null;
+        setInterval(function () {
+          fetch('/__version', { cache: 'no-store' })
+            .then(function (r) {
+              return r.json();
+            })
+            .then(function (data) {
+              if (data && data.mtimeMs) {
+                if (lastVersion !== null && data.mtimeMs !== lastVersion) {
+                  window.location.reload();
+                }
+                lastVersion = data.mtimeMs;
+              }
+            })
+            .catch(function () {});
+        }, 1500);
+      }
     })();
   </script>
 </body>

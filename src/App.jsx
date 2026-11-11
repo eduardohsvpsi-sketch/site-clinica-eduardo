@@ -201,8 +201,8 @@ const CONTENT = {
       'Acredito em uma psicologia ativa, dinâmica e sem posturas engessadas: um trabalho construído lado a lado com você, que valida a sua história com profundidade enquanto oferece ferramentas claras para lidar com os desafios reais do presente.',
     /* Fotos do Carrossel 1 (Apenas no Slide 1 do painel cinza) */
     carouselPhotos: [
-      { src: PHOTO_2_URL, alt: 'Eduardo Vieira - Formatura em Psicologia' },
       { src: PHOTO_URL, alt: 'Eduardo Vieira - Psicólogo Clínico' },
+      { src: PHOTO_2_URL, alt: 'Eduardo Vieira - Formatura em Psicologia' },
     ],
     /* Slide 2 do Painel Cinza: Clínica & Arte com Foto 3 estática (sem carrossel na foto) */
     artBadge: 'Sobre Mim • Clínica & Arte',
@@ -314,8 +314,8 @@ const CONTENT = {
       'I believe in an active, dynamic psychology free of rigid postures: a collaborative process built side by side with you, validating your story with depth while offering clear tools to deal with real-life challenges in the present.',
     /* Photos for Slide 1 photo carousel */
     carouselPhotos: [
-      { src: PHOTO_2_URL, alt: 'Eduardo Vieira - Psychology Graduation' },
       { src: PHOTO_URL, alt: 'Eduardo Vieira - Clinical Psychologist' },
+      { src: PHOTO_2_URL, alt: 'Eduardo Vieira - Psychology Graduation' },
     ],
     /* Slide 2 of Gray Panel: Clinic & Art with static Photo 3 (no photo carousel) */
     artBadge: 'About Me • Clinic & Art',
@@ -752,8 +752,8 @@ export default function App() {
         >
           <div className="max-w-5xl mx-auto px-5 sm:px-8">
             <div className="relative rounded-2xl bg-[#353839] text-white p-6 sm:p-12 shadow-xl">
-              {/* Barra Superior do Carrossel de Painéis Cinza (Abas + Setas ‹ ›) */}
-              <div className="flex flex-wrap items-center justify-between gap-3 pb-6 mb-6 border-b border-white/10">
+              {/* Barra Superior do Carrossel de Painéis Cinza (Abas + Setas ‹ › sem barra divisória abaixo) */}
+              <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
                 <div className="flex flex-wrap items-center gap-2">
                   {t.aboutPanelTabs.map((tabLabel, idx) => (
                     <button
@@ -982,23 +982,6 @@ export default function App() {
                   </div>
                 </div>
               )}
-
-              {/* Indicadores Inferiores do Carrossel de Painéis Cinza */}
-              <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-center gap-3">
-                {[0, 1].map((idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={() => setAboutPanelSlide(idx)}
-                    aria-label={t.aboutPanelTabs[idx]}
-                    className={`h-2.5 rounded-full transition-all ${
-                      aboutPanelSlide === idx
-                        ? 'w-8 bg-[#B08D57]'
-                        : 'w-2.5 bg-white/40 hover:bg-white/70'
-                    }`}
-                  />
-                ))}
-              </div>
             </div>
           </div>
         </section>

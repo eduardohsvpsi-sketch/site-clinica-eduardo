@@ -30,7 +30,7 @@ Este arquivo funciona como a ponte de comunicação em tempo real entre todos os
    - **Contatos Diretos:** WhatsApp (`+55 13 98121-6248`), E-mail com mensagem pré-preenchida (`eduardohsv.psi@gmail.com`) e Instagram (`@culturaehistoriapsi`).
    - **Carrossel de Painéis Cinza em "Sobre Mim":**
      - Os dois painéis cinza escuro (`#353839`) em "Sobre Mim" funcionam juntos como um único carrossel de painéis (`01 • Apresentação & Formação` e `02 • Clínica, Arte & Histórias`), com setas `‹` / `›` e sem barra divisória abaixo dos switches numerados.
-     - **Painel 1 (Apresentação & Formação):** Possui carrossel de fotos com `eduardo-foto.jpg` (retrato profissional em 1º lugar) e `eduardo-foto-2.jpg` (formatura em 2º lugar).
+     - **Painel 1 (Apresentação & Formação):** Possui carrossel de fotos com `eduardo-foto-2.jpg` (formatura em 1º lugar) e `eduardo-foto.jpg` (retrato profissional em 2º lugar).
      - **Painel 2 (Clínica, Arte & Histórias):** Exibe `eduardo-foto-3.jpg` como foto estática (sem sub-carrossel na foto) acompanhada do texto autoral sobre clínica, cinema, literatura e quadrinhos (em PT e EN).
    - **Header Mobile com Todas as Informações Visíveis:** No celular, o Header exibe 100% das informações sem esconder nada em menu hambúrguer: Linha 1 com Foto, Nome (`Eduardo Vieira`), Subtítulo completo (`Psicólogo Clínico • 100% Online`), Switch `PT/EN` com bandeiras divididas e botão `Agendar uma sessão`; Linha 2 com todos os links de navegação (`Início`, `Como Funciona a Terapia`, `Para Quem É`, `Sobre Mim`) sempre visíveis.
 4. **Repositório GitHub & Deploy (Git Push Automático):**

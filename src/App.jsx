@@ -123,6 +123,7 @@ const CONTENT = {
       { label: 'Sobre Mim', href: '#sobre' },
     ],
     ctaSchedule: 'Agendar uma sessão',
+    ctaScheduleMobile: 'Agendar',
     heroBadge: 'Psicoterapia 100% Online • Sem Barreiras Geográficas',
     heroTitleStart: 'Um espaço seguro para compreender suas angústias e ',
     heroTitleHighlight: 'ressignificar sua história.',
@@ -235,6 +236,7 @@ const CONTENT = {
       { label: 'About Me', href: '#sobre' },
     ],
     ctaSchedule: 'Book a session',
+    ctaScheduleMobile: 'Book',
     heroBadge: '100% Online Psychotherapy • No Geographic Barriers',
     heroTitleStart: 'A safe space to understand your distress and ',
     heroTitleHighlight: 'reframe your story.',
@@ -378,29 +380,29 @@ export default function App() {
     <div className="min-h-screen flex flex-col bg-[#F4F5F6] text-[#353839] font-sans antialiased selection:bg-[#B08D57]/20 selection:text-[#353839]">
       {/* Header / Navbar com TODAS as informações visíveis tanto no Mobile quanto no Desktop */}
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-40 w-full max-w-full overflow-hidden transition-all duration-300 ${
           scrolled
             ? 'bg-[#353839]/95 backdrop-blur-md shadow-md py-2 sm:py-3'
             : 'bg-[#353839] py-2.5 sm:py-4'
         } border-b border-white/10`}
       >
-        <div className="max-w-6xl mx-auto px-3.5 sm:px-8">
-          {/* Linha Principal do Header (Desktop: tudo em 1 linha | Mobile: Identidade completa + Switch PT/EN + Agendar) */}
-          <div className="flex items-center justify-between gap-2 sm:gap-4">
+        <div className="max-w-6xl mx-auto px-3 sm:px-8">
+          {/* Linha Principal do Header (Desktop: tudo em 1 linha | Mobile: Identidade completa + Switch PT/EN + Agendar dentro do quadro) */}
+          <div className="flex items-center justify-between gap-1.5 sm:gap-4 w-full">
             <a
               href="#inicio"
-              className="flex items-center gap-2.5 sm:gap-3.5 group shrink-0"
+              className="flex items-center gap-2 sm:gap-3.5 group min-w-0 flex-1 md:flex-initial"
             >
               <img
                 src={PHOTO_URL}
                 alt="Eduardo Vieira"
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full object-cover object-top border border-[#B08D57] shrink-0 group-hover:opacity-90 transition-opacity duration-300"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-cover object-top border border-[#B08D57] shrink-0 group-hover:opacity-90 transition-opacity duration-300"
               />
-              <div>
-                <span className="block text-white font-serif text-base sm:text-xl font-medium tracking-wide leading-tight">
+              <div className="min-w-0">
+                <span className="block text-white font-serif text-[15px] sm:text-xl font-medium tracking-wide leading-tight">
                   Eduardo Vieira
                 </span>
-                <span className="block text-[#D1D5DB] text-[9.5px] sm:text-[11px] uppercase tracking-[0.08em] sm:tracking-[0.18em]">
+                <span className="block text-[#D1D5DB] text-[8.5px] sm:text-[11px] uppercase tracking-[0.04em] sm:tracking-[0.18em] leading-tight">
                   {t.headerRole}
                 </span>
               </div>
@@ -462,7 +464,7 @@ export default function App() {
               </a>
             </nav>
 
-            {/* Controles Superiores Mobile: Switch PT/EN com Bandeiras + Botão Agendar */}
+            {/* Controles Superiores Mobile: Switch PT/EN com Bandeiras + Botão Agendar ajustado ao quadro */}
             <div className="flex md:hidden items-center gap-1.5 shrink-0">
               <div
                 className="inline-flex items-center rounded-lg bg-[#27292A] p-0.5 text-[10px] font-medium text-[#D1D5DB]"
@@ -503,21 +505,22 @@ export default function App() {
                 rel="noopener noreferrer"
                 className="px-2.5 py-1.5 rounded-lg bg-[#B08D57] hover:bg-[#C5A572] text-white font-semibold text-[11px] tracking-wide transition-all whitespace-nowrap"
               >
-                {t.ctaSchedule}
+                <span className="sm:hidden">{t.ctaScheduleMobile}</span>
+                <span className="hidden sm:inline">{t.ctaSchedule}</span>
               </a>
             </div>
           </div>
 
-          {/* Segunda Linha do Header no Mobile: Todos os links de navegação sempre visíveis (sem esconder em menu) */}
+          {/* Segunda Linha do Header no Mobile: Todos os links de navegação sempre visíveis dentro do quadro */}
           <nav
             aria-label="Navegação principal mobile"
-            className="flex md:hidden items-center justify-between gap-2 mt-2 pt-2 border-t border-white/10 overflow-x-auto no-scrollbar"
+            className="flex md:hidden flex-wrap items-center justify-between gap-x-2 gap-y-1 mt-2 pt-1.5 border-t border-white/10 w-full"
           >
             {t.nav.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="text-[11.5px] font-normal text-[#E5E7EB] hover:text-[#C5A572] transition-colors whitespace-nowrap py-0.5"
+                className="text-[10.5px] sm:text-xs font-normal text-[#E5E7EB] hover:text-[#C5A572] transition-colors whitespace-nowrap py-0.5"
               >
                 {item.label}
               </a>

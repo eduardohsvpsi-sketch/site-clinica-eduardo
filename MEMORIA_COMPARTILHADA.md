@@ -10,10 +10,11 @@ Este arquivo funciona como a ponte de comunicação em tempo real entre todos os
 | :--- | :--- | :--- |
 | **Chat 1 — Landing Page, Design & Deploy (GitHub/Cloudflare)** | `1ce55d27-c727-476f-b5f4-8dabf52948e8` | `C:\Users\Windows 11\.gemini\antigravity\brain\1ce55d27-c727-476f-b5f4-8dabf52948e8\.system_generated\logs\transcript.jsonl` |
 | **Chat 2 — Teoria (Psicologia Histórico-Cultural), Documentos & Briefing** | `bd50fae7-4b40-47e3-b5eb-a45948d85529` | `C:\Users\Windows 11\.gemini\antigravity\brain\bd50fae7-4b40-47e3-b5eb-a45948d85529\.system_generated\logs\transcript.jsonl` |
+| **Chat 3 — Plano de Execução Digital, Reels (PHC) & Tráfego Pago (Google/Meta Ads)** | `595f4aca-8307-4896-9ad4-2157024b7d7f` | `C:\Users\Windows 11\.gemini\antigravity\brain\595f4aca-8307-4896-9ad4-2157024b7d7f\.system_generated\logs\transcript.jsonl` |
 
 ---
 
-## 📌 Estado Atual do Projeto (Última Sincronização: 10/11/2026)
+## 📌 Estado Atual do Projeto (Última Sincronização: 16/11/2026)
 
 1. **Abordagem Teórica Definitiva:**
    - **Psicologia Histórico-Cultural (PHC)** (Lev Vigotski / Instituto Veresk) integrada a ferramentas pragmáticas da **Terapia Cognitivo-Comportamental (TCC)**.
@@ -38,3 +39,6 @@ Este arquivo funciona como a ponte de comunicação em tempo real entre todos os
    - **Regra ativa:** Todas as atualizações devem ser enviadas automaticamente via `git push origin main --force`.
    - Pasta pronta para Cloudflare Pages: `cloudflare-deploy/`.
    - Servidor local: `agy-node server.mjs` em `http://localhost:3000`.
+5. **Plano de Execução Digital & Tráfego Pago (`plano-clinica-antigravity.md`):**
+   -Sequência de 4 roteiros de Reels sobre a temática de **"desistir"** sob a Psicologia Histórico-Cultural (1. Luto das expectativas; 2. Comportamentos fossilizados e autodomínio da conduta; 3. Perda de sentido pessoal e vontade; 4. Compensação social e autoria).
+   - Checklist completo de otimização do perfil do Instagram (`@culturaehistoriapsi`) + Guia passo a passo de Google Ads e Meta Ads (palavras-chave positivas e negativas, CPC, CTR, CPA e conformidade ética `CRP 06/200229`).
